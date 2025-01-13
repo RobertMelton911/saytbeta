@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito Sans:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open Sans:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --pocketoptioncom-montserrat-semibold-40: Montserrat;
+  --pocketoptioncom-semantic-link: "Nunito Sans";
+  --font-open-sans: "Open Sans";
+  --font-inter: Inter;
+
+  /* font sizes */
+  --font-size-sm: 14px;
+  --font-size-4xl: 23px;
+  --pocketoptioncom-nunito-sans-bold-16-upper-size: 16px;
+  --pocketoptioncom-nunito-sans-bold-17-size: 17px;
+  --pocketoptioncom-semantic-link-size: 13px;
+  --font-size-31xl: 50px;
+  --pocketoptioncom-montserrat-semibold-40-size: 40px;
+  --pocketoptioncom-nunito-sans-bold-20-upper-size: 20px;
+  --font-size-mini: 15px;
+  --font-size-xs: 12px;
+  --font-size-2xs: 11px;
+  --font-size-lg: 18px;
+  --pocketoptioncom-semantic-heading-2-size: 46px;
+  --font-size-37xl: 56px;
+
+  /* Colors */
+  --color-gray-100: #2a2b30;
+  --color-gray-200: #1f2937;
+  --color-gray-300: #212121;
+  --color-mediumseagreen-100: #6fc274;
+  --color-mediumseagreen-200: #0fd895;
+  --color-mediumseagreen-300: #10b981;
+  --color-mediumseagreen-400: #12b17d;
+  --color-mediumseagreen-500: rgba(16, 185, 129, 0.07);
+  --color-darkslategray-100: #374151;
+  --color-darkslategray-200: #303442;
+  --color-darkslategray-300: #2b3544;
+  --color-darkslategray-400: #163f40;
+  --color-darkslategray-500: #243040;
+  --color-darkslategray-600: #232b36;
+  --color-lightslategray-100: #8b97a3;
+  --color-lightslategray-200: #868893;
+  --color-lightslategray-300: #7d879d;
+  --color-mintcream: #ddeee8;
+  --pocketoptioncom-white: #fff;
+  --color-dimgray-100: #707070;
+  --color-dimgray-200: #54565f;
+  --color-whitesmoke-100: #f6f7f7;
+  --color-whitesmoke-200: #ebedf0;
+  --color-silver: #a7bbb4;
+  --color-cornflowerblue: rgba(48, 153, 245, 0.05);
+  --color-lightsteelblue: #8ea5c0;
+  --color-lightgray: #d1d4dc;
+
+  /* Spacing */
+  --item-spacing-0-01: -0.001rem;
+  --radius-full: 624.937rem;
+  --item-spacing-83-19: 5.199rem;
+  --width-744: 46.5rem;
+
+  /* Paddings */
+  --padding-base: 1rem;
+  --padding-xl-5: 1.281rem;
+
+  /* Border radiuses */
+  --br-xl: 20px;
+  --br-3xs: 10px;
+  --br-31xl: 50px;
+  --br-6xs: 7px;
+  --br-10xs-8: 2.8px;
+  --br-8xs: 5px;
+  --br-6xl: 25px;
+  --br-5xs: 8px;
+  --br-9xs: 4px;
+  --br-xs: 12px;
+}
