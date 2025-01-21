@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Line } from "react-chartjs-2";
+// import { Line } from "react-chartjs-2";
 import styles from "./first-page.module.css";
+import HeaderRegis from "../components/HeaderRegis";
 
 const FirstPage = () => {
   const navigate = useNavigate(); // Инициализация навигации
@@ -98,7 +99,7 @@ const FirstPage = () => {
   };
   return (
     <div className={styles.firstPage}>
-
+      <HeaderRegis />
 
       <div className={styles.footer}>
         <img className={styles.footerLogoIcon} alt="" src="/footerlogo.svg" />
@@ -307,7 +308,7 @@ const FirstPage = () => {
         </div>
       </div>
       
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <div className={styles.headerLanguage}>
           <img className={styles.vectorIcon7} alt="" src="/vector2.svg" />
           <div className={styles.div12}>Русский</div>
@@ -319,7 +320,7 @@ const FirstPage = () => {
           <div className={styles.div13} onClick={handleAbout}>О Компании</div>
         </div>
         <img className={styles.headerLogoIcon} alt="" src="/headerlogo.svg" />
-      </div>
+      </div> */}
 
 
       <div className={styles.registration}>
