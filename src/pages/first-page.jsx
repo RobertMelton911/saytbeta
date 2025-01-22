@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 // import { Line } from "react-chartjs-2";
 import styles from "./first-page.module.css";
 import HeaderRegis from "../components/HeaderRegis";
+import Registration from "../components/Registration";
+import Footer from "../components/Footer";
 
 const FirstPage = () => {
   const navigate = useNavigate(); // Инициализация навигации
@@ -100,8 +102,10 @@ const FirstPage = () => {
   return (
     <div className={styles.firstPage}>
       <HeaderRegis />
+      <Registration />
+      <Footer />
 
-      <div className={styles.footer}>
+      {/* <div className={styles.footer}>
         <img className={styles.footerLogoIcon} alt="" src="/footerlogo.svg" />
         <div className={styles.footerLink}>
           <div className={styles.div}>Регуляторная политика</div>
@@ -149,7 +153,7 @@ const FirstPage = () => {
           <img className={styles.vectorIcon} alt="" src="/vector1.svg" />
           <b className={styles.b}>Предупреждение о рисках:</b>
         </div>
-      </div>
+      </div> */}
 
       
       <div className={styles.main}>
@@ -323,7 +327,7 @@ const FirstPage = () => {
       </div> */}
 
 
-      <div className={styles.registration}>
+      {/* <div className={styles.registration}>
         <div className={styles.registrationContainer}>
           <div className={styles.regisGoogle}>
             <img className={styles.googlevecIcon} alt="" src="/googlevec.svg" />
@@ -342,7 +346,6 @@ const FirstPage = () => {
             </div>
           </div>
           <input className={styles.checkbox} type="checkbox" />
-          {/* <img className={styles.vectorIcon9} alt="" src="/vector4.svg" /> */}
           <div className={styles.regisPassword}>
             <div className={styles.div18}>
               <span className={styles.txt}>
@@ -368,7 +371,7 @@ const FirstPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

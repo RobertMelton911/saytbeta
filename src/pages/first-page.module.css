@@ -849,6 +849,7 @@
   left: 0;
 }
 .mainSlider {
+  z-index: 1;
   width: 100%;
   right: 0;
   height: 100vh;
@@ -1197,7 +1198,7 @@
   z-index: 100;
 }
 .firstPage {
-  background-color: #0F1C2B;
+  background-color: transparent;
   width: 100%;
   position: relative;
   text-align: left;

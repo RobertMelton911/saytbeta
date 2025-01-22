@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./third-page.module.css";
+import HeaderRegis from "../components/HeaderRegis";
+import Registration from "../components/Registration";
+import Footer from "../components/Footer";
 
 const typingText = `Качество обслуживания клиентов остается нашим главным приоритетом с момента основания.
 Мы стараемся не только обеспечивать безупречную поддержку, но и внимательно прислушиваться к отзывам пользователей.
@@ -76,8 +79,11 @@ const ThirdPage = () => {
 
   return (
     <div className={styles.thirdPage}>
+      <HeaderRegis />
+      <Registration />
+      <Footer />
 
-      <div className={styles.footer}>
+      {/* <div className={styles.footer}>
         <div className={styles.footerLogo} onClick={handleGoHome}>
           <img className={styles.vectorIcon} alt="" src="/vector.svg" />
           <div className={styles.tradingBroker}>Trading Broker</div>
@@ -128,7 +134,7 @@ const ThirdPage = () => {
           <img className={styles.vectorIcon1} alt="" src="/vector1.svg" />
           <b className={styles.b}>Предупреждение о рисках:</b>
         </div>
-      </div>
+      </div> */}
 
       <div className={styles.mainJoin}>
         <img
@@ -385,7 +391,7 @@ const ThirdPage = () => {
         </div>
       </div>
 
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <div className={styles.headerLanguage}>
           <img className={styles.vectorIcon2} alt="" src="/vector2.svg" />
           <div className={styles.div30}>Русский</div>
@@ -397,9 +403,9 @@ const ThirdPage = () => {
           <div className={styles.div31} onClick={handleAbout}>О Компании</div>
         </div>
         <img className={styles.headerLogoIcon} onClick={handleGoHome} alt="" src="/headerlogo.svg" />
-      </div>
+      </div> */}
 
-      <div className={styles.registration}>
+      {/* <div className={styles.registration}>
         <div className={styles.registrationContainer}>
           <div className={styles.regisGoogle}>
             <img className={styles.googlevecIcon} alt="" src="/googlevec.svg" />
@@ -418,7 +424,6 @@ const ThirdPage = () => {
             </div>
           </div>
           <input className={styles.checkbox} type="checkbox" />
-          {/* <img className={styles.vectorIcon4} alt="" src="/vector4.svg" /> */}
           <div className={styles.regisPassword}>
             <div className={styles.div36}>
               <span className={styles.txt}>
@@ -444,7 +449,7 @@ const ThirdPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
     </div>
   );
