@@ -1,0 +1,122 @@
+.mainContainerDocuments {
+  position: absolute;
+  width: calc(100% - 135px);
+  top: 32.188rem;
+  right: 3.125rem;
+  left: 5.313rem;
+  border-radius: var(--br-xl);
+  background-color: var(--color-darkslategray-300);
+  height: 17.25rem;
+}
+.b7,
+.linkFive {
+  position: absolute;
+}
+.b7 {
+  top: 0;
+  left: 0;
+}
+.linkFive {
+  top: 12.625rem;
+  left: 22.438rem;
+  /* border-bottom: 1px solid var(--color-mediumseagreen-300); */
+  box-sizing: border-box;
+  width: 10.438rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+.b7,
+.b7,
+.b7,
+.amlKyc1,
+.b9,
+.b11 {
+  border-bottom: 1px solid var(--color-mediumseagreen-300);
+  transition: border-bottom 0.3s ease, color 0.3s ease;
+}
+.b7:hover,
+.b7:hover,
+.b7:hover,
+.amlKyc1:hover,
+.b9:hover,
+.b11:hover {
+  border-bottom-color: transparent;
+}
+.amlKyc1 {
+  top: 0;
+  left: -0.062rem;
+}
+.amlKyc1,
+.b9,
+.linkFour {
+  position: absolute;
+}
+.linkFour {
+  top: 7.313rem;
+  left: 70.5rem;
+  /* border-bottom: 1px solid var(--color-mediumseagreen-300); */
+  box-sizing: border-box;
+  width: 10.875rem;
+  height: 1.5rem;
+  cursor: pointer;
+}
+.b9 {
+  top: 1.438rem;
+  left: 0;
+  /* border-bottom: 1px solid var(--color-mediumseagreen-300); */
+}
+.linkThree,
+.linkTwo {
+  position: absolute;
+  top: 7.375rem;
+  left: 47.313rem;
+  /* border-bottom: 1px solid var(--color-mediumseagreen-300); */
+  box-sizing: border-box;
+  width: 11.375rem;
+  height: 2.938rem;
+  cursor: pointer;
+}
+.linkTwo {
+  top: 12.625rem;
+  width: 12.625rem;
+  height: 1.5rem;
+}
+.b11 {
+  top: -0.031rem;
+  left: 0;
+  border-bottom: 1px solid var(--color-mediumseagreen-300);
+}
+.b11,
+.div15,
+.linkOne {
+  position: absolute;
+}
+.linkOne {
+  top: 7.375rem;
+  left: 22.5rem;
+  /* border-bottom: 1px solid var(--color-mediumseagreen-300); */
+  box-sizing: border-box;
+  width: 13.063rem;
+  height: 2.938rem;
+  cursor: pointer;
+}
+.div15 {
+  top: 2.063rem;
+  left: 22.438rem;
+  font-size: var(--pocketoptioncom-montserrat-semibold-40-size);
+  letter-spacing: 1px;
+  line-height: 48px;
+  font-weight: 600;
+  font-family: var(--pocketoptioncom-montserrat-semibold-40);
+  display: flex;
+  align-items: center;
+  width: 16.188rem;
+}
+.documentationIcon {
+  position: absolute;
+  top: 2.25rem;
+  left: 3.75rem;
+  width: 12.438rem;
+  height: 12.438rem;
+  object-fit: cover;
+}

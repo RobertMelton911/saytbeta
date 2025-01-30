@@ -1,0 +1,174 @@
+.mainSlaid {
+  position: absolute;
+  width: calc(100%);
+  top: 0;
+  right: 18.75rem;
+  left: 0;
+  height: 37.813rem;
+}
+.slaidBeckgraundIcon {
+  width: 101.25rem;
+  height: 37.813rem;
+  overflow: hidden;
+  object-fit: cover;
+}
+.div7,
+.slaidBeckgraundIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.slaidTrade {
+  position: absolute;
+  width: calc(100% - 132px);
+  top: 7.575rem;
+  right: 2rem;
+  left: 6.25rem;
+  height: 23.975rem;
+}
+.tradeStart {
+  position: absolute;
+  width: calc(100% - 1135px);
+  top: 22.488rem;
+  right: 70.938rem;
+  left: 0;
+  height: 1.5rem;
+}
+.startClick {
+  height: 100%;
+  bottom: 0;
+  left: 6.188rem;
+  border-bottom: 2px solid var(--color-mediumseagreen-300);
+  box-sizing: border-box;
+  padding-bottom: 5px;
+  width: 14.875rem;
+  transition: border-bottom 0.4s ease;
+  cursor: pointer;
+}
+.startClick:hover,
+.startEnter:hover {
+  border-bottom-color: transparent;
+}
+.div8,
+.startClick,
+.startEnter {
+  position: absolute;
+  top: 0;
+}
+.div8 {
+  left: 3.688rem;
+}
+.startEnter {
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  border-bottom: 2px solid var(--color-mediumseagreen-300);
+  box-sizing: border-box;
+  padding-bottom: 5px;
+  width: 3.063rem;
+  transition: border-bottom 0.4s ease;
+  cursor: pointer;
+}
+.tradeRegistering {
+  position: absolute;
+  top: 17.988rem;
+  left: 0;
+  cursor: pointer;
+  border-radius: var(--br-xl);
+  background: linear-gradient(0deg, #10b981, #0a6043);
+  width: 19.688rem;
+  height: 3.25rem;
+  text-align: center;
+  font-size: var(--pocketoptioncom-nunito-sans-bold-16-upper-size);
+  font-family: var(--pocketoptioncom-montserrat-semibold-40);
+}
+.b20 {
+  position: absolute;
+  top: 1.25rem;
+  left: 5.813rem;
+  line-height: 12px;
+}
+.tradingBroker2 {
+  position: absolute;
+  top: 14.425rem;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 9.25rem;
+}
+.div10,
+.tradeFinancial {
+  position: absolute;
+  left: 0;
+}
+.div10 {
+  top: 0.125rem;
+  letter-spacing: 2px;
+  line-height: 55px;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 44.688rem;
+}
+.tradeFinancial {
+  width: calc(100% - 756px);
+  top: 5.238rem;
+  right: 47.25rem;
+  height: 7.188rem;
+  font-size: var(--font-size-31xl);
+  font-family: var(--pocketoptioncom-montserrat-semibold-40);
+}
+.txt {
+  width: 100%;
+}
+.forex {
+  margin: 0;
+}
+.principalLeft,
+.tradePrincipal {
+  position: absolute;
+  left: 0;
+  height: 1.188rem;
+}
+.principalLeft {
+  width: 49px;
+  top: 0;
+  right: 7.75rem;
+  border-bottom: 1px solid var(--color-mediumseagreen-300);
+  box-sizing: border-box;
+  color: var(--color-mintcream);
+  cursor: pointer;
+  color: #DDEEE8;
+  text-decoration: none;
+  transition: border-bottom 0.3s ease, color 0.3s ease;
+}
+.principalLeft:hover{
+  border-bottom-color: transparent; /* Полоска исчезает плавно */
+  /* color: #12B17D; */
+}
+.tradePrincipal {
+  width: calc(100% - 1315px);
+  top: -0.012rem;
+  right: 82.188rem;
+  font-size: var(--pocketoptioncom-semantic-link-size);
+  color: var(--color-lightslategray-100);
+}
+.div11,
+.div12 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+.div11 {
+  top: 0.031rem;
+  left: 3.5rem;
+  white-space: pre-wrap;
+  width: 6.563rem;
+  
+}
+.div12 {
+  top: 0;
+  left: 0;
+  width: 3.188rem;
+}

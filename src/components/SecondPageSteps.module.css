@@ -1,0 +1,66 @@
+/* SecondPageSteps.module.css */
+.stepsContainer {
+  position: absolute;
+  width: 100%;
+  top: 783px;
+  right: 0;
+  left: 0;
+  background-color: var(--color-darkslategray-200);
+  height: 2587px;
+}
+
+.step1 {
+  position: absolute;
+  height: calc(100% - 192.6px);
+  width: calc(100% - 876px);
+  top: 4rem;
+  right: 48.5rem;
+  bottom: 8.038rem;
+  left: 6.25rem;
+}
+
+.reversed {
+  flex-direction: row-reverse;
+  color: black;
+}
+
+.iconWrapper1 {
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  top: 4rem;
+  right: 2rem;
+  bottom: 8.038rem;
+  left: 52.75rem;
+}
+
+.icon1 {
+  position: absolute;
+  top: -0.237rem;
+  left: 15.688rem;
+  object-fit: cover;
+}
+
+.contentWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 8px;
+}
+
+.number {
+  font-size: 24px;
+  font-weight: bold;
+  color: gray;
+}

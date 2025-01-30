@@ -682,9 +682,8 @@
 }
 .grafPage {
   width: 100%;
-  position: relative;
   background-color: #212121;
-  height: 59.063rem;
+  height: 100vh;
   text-align: left;
   font-size: 12px; /* var(--font-size-xs) */
   color: #868893; /* var(--color-lightslategray-100) */

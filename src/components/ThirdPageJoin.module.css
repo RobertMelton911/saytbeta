@@ -1,0 +1,92 @@
+.mainJoin {
+  top: 155.188rem;
+  left: 0;
+  background: linear-gradient(180deg, #053525, #10b981);
+  width: 101.25rem;
+  height: 26.75rem;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--pocketoptioncom-nunito-sans-bold-16-upper-size);
+  font-family: var(--pocketoptioncom-montserrat-semibold-40);
+}
+.div7,
+.mainJoin {
+  position: absolute;
+}
+.div7 {
+  top: 6.188rem;
+  left: calc(50% - 279px);
+  font-size: var(--pocketoptioncom-montserrat-semibold-40-size);
+  letter-spacing: 1px;
+  line-height: 48px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35.375rem;
+  height: 3.063rem;
+}
+.joinBeckgraundIcon {
+  top: calc(50% - 499.4px);
+  left: calc(50% - 798px);
+  width: 120rem;
+  height: 37.438rem;
+  object-fit: cover;
+}
+.joinBeckgraundIcon {
+  position: absolute;
+  overflow: hidden;
+}
+.joinBtn {
+  top: 17.325rem;
+  left: calc(50% - 189.2px);
+  border-radius: var(--br-xl);
+  background-color: var(--color-darkslategray-300);
+  width: 23.65rem;
+  height: 3.188rem;
+  color: var(--color-mediumseagreen-300);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
+  transition: all 0.3s ease; /* Плавный переход */
+}
+.joinBtn:hover {
+  /* background-color: #80d0ff; Меняем фон на более светлый */
+  box-shadow: 0 0 20px rgba(0, 255, 179, 0.8), 0 0 30px rgba(0, 255, 179, 0.6); /* Усиливаем свечение */
+}
+.joinBtn:hover .div6 {
+  color: #00FFAA;
+}
+.div6,
+.joinBtn {
+  position: absolute;
+}
+.div6 {
+  top: 0.988rem;
+  left: calc(50% - 177px);
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22.125rem;
+  height: 1.188rem;
+  transition: color 0.3s ease; /* Плавное изменение цвета */
+}
+.tradingBrokerContainer {
+  position: absolute;
+  top: 11.625rem;
+  left: calc(50% - 482px);
+  font-size: var(--pocketoptioncom-nunito-sans-bold-17-size);
+  font-family: var(--pocketoptioncom-semantic-link);
+  display: flex;
+  align-items: center;
+  width: 62.625rem;
+  height: 2.5rem;
+}
+.txt {
+  width: 100%;
+}
+.forex {
+  margin: 0;
+}

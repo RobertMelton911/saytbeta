@@ -1,0 +1,67 @@
+.mainContainerClients {
+  position: absolute;
+  top: 6.688rem;
+  left: 6.375rem;
+  width: 73.313rem;
+  height: 19.25rem;
+}
+.clientsRight {
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 461px);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 28.813rem;
+}
+.typingEffect {
+  position: relative;
+  top: 70px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #DDEEE8;
+  white-space: pre-wrap; /* Для сохранения переносов */
+  word-wrap: break-word;
+  margin: 10px 0;
+}
+.highlight {
+  color: #A7BBB4;
+  font-size: 19px
+}
+.rightQuotesIcon {
+  position: absolute;
+  top: calc(50% - 142.2px);
+  left: 452px;
+  width: 3.875rem;
+  height: 3.875rem;
+  overflow: hidden;
+}
+.clientsLeft,
+.div22 {
+  position: absolute;
+  left: 0;
+}
+.div22 {
+  top: -0.062rem;
+  letter-spacing: 1px;
+  line-height: 48px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 24.044rem;
+  height: 9.063rem;
+}
+.clientsLeft {
+  width: calc(100% - 765px);
+  top: 5.063rem;
+  right: 47.813rem;
+  height: 9rem;
+  font-size: var(--pocketoptioncom-montserrat-semibold-40-size);
+  font-family: var(--pocketoptioncom-montserrat-semibold-40);
+}
+.txt {
+  width: 100%;
+}
+.forex {
+  margin: 0;
+}

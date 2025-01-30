@@ -4,88 +4,23 @@ import styles from "./second-page.module.css";
 import HeaderRegis from "../components/HeaderRegis";
 import Registration from "../components/Registration";
 import Footer from "../components/Footer";
+import SecondPageSlaid from "../components/SecondPageSlaid";
+import SecondPageBegin from "../components/SecondPageBegin";
+import SecondPageSteps from "../components/SecondPageSteps";
 
 const SecondPage = () => {
-  const navigate = useNavigate(); // Инициализация навигации
-
-  // Функция для обработки клика на кнопку "Быстрый старт"
-  const handleQuickStart = () => {
-    navigate("/secondpage"); // Перенаправление на страницу second-page
-  };
-
-  const handleDemo = () => {
-    navigate("/grafpage");
-  };
-  
-  const handleAbout = () => {
-    navigate("/thirdpage");
-  };
-
-  const handleGoHome = () => {
-    navigate("/");
-  };
-
   return (
     <div className={styles.secondPage}>
       <HeaderRegis />
       <Registration />
+
+      <SecondPageSlaid />
+      <SecondPageBegin />
+
+      <SecondPageSteps />
       <Footer />
-
-      {/* <div className={styles.footer}>
-        <div className={styles.footerLogo} onClick={handleGoHome}>
-          <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-          <div className={styles.tradingBroker}>Trading Broker</div>
-        </div>
-        <div className={styles.footerLink}>
-          <div className={styles.div}>Регуляторная политика</div>
-        </div>
-        <div className={styles.footerLink1}>
-          <div className={styles.div1}>Политика платежей</div>
-        </div>
-        <div className={styles.footerLink2}>
-          <div className={styles.div2}>Политика конфиденциальности</div>
-        </div>
-        <div className={styles.footerLink3}>
-          <div className={styles.amlKyc}>Политика AML и KYC</div>
-        </div>
-        <div className={styles.footerLink4}>
-          <div className={styles.div3}>Условия предоставления сервиса</div>
-        </div>
-        <div className={styles.footerLink5}>
-          <div className={styles.div4}>Контакты</div>
-        </div>
-        <div className={styles.footerRisks}>
-          <div className={styles.div5}>Предупреждение о рисках</div>
-        </div>
-        <div className={styles.forexContainer}>
-          <div className={styles.txt}>
-            <p className={styles.forex}>
-              Торговля на финансовых рынках сопряжена с риском. Forex и другие
-              финансовые контракты являются сложными финансовыми инструментами,
-              используемыми для маржинальной торговли. Торговля имеет высокий
-              уровень риска, так как
-            </p>
-            <p className={styles.forex}>
-              кредитное плечо может работать как в вашу пользу, так и против
-              вас. Вследствие этого торговля подходит не всем инвесторам из-за
-              высокого риска потери инвестированного капитала. Вы не должны
-              рисковать большими средствами, чем
-            </p>
-            <p className={styles.forex}>
-              вы готовы потерять. Перед началом торговли вы должны убедиться,
-              что вы понимаете все риски и учитываете их в совокупности с
-              уровнем вашего опыта при постановке ваших инвестиционных целей.
-            </p>
-          </div>
-        </div>
-        <div className={styles.footerWarning}>
-          <img className={styles.vectorIcon1} alt="" src="/vector1.svg" />
-          <b className={styles.b}>Предупреждение о рисках:</b>
-        </div>
-      </div> */}
-
       
-      <div className={styles.bottomSteps}>
+      {/* <div className={styles.bottomSteps}>
         <div className={styles.stepsSix}>
           <div className={styles.sixText}>
             <b className={styles.b1}>
@@ -154,9 +89,9 @@ const SecondPage = () => {
             />
           </div>
         </div>
-      </div>
+      </div> */}
       
-      <div className={styles.topSteps}>
+      {/* <div className={styles.topSteps}>
         <div className={styles.stepsThree}>
           <div className={styles.threeSvg}>
             <img
@@ -226,111 +161,8 @@ const SecondPage = () => {
             <b className={styles.b19}>1</b>
           </div>
         </div>
-      </div>
-
-      <div className={styles.mainBegin}>
-        <div className={styles.mainBeginText}>Начните с нескольких простых шагов.</div>
-      </div>
-
-      {/* первый слайд  */}
-      <div className={styles.mainSlaid}> 
-        <img
-          className={styles.slaidBeckgraundIcon}
-          alt=""
-          src="/slaidbeckgraund@2x.png"
-        />
-        <div className={styles.slaidTrade}>
-          <div className={styles.tradeStart}>
-            <div className={styles.startClick}>
-              <div className={styles.div7} onClick={handleDemo}>Начать торговлю в один клик</div>
-            </div>
-            <div className={styles.div8}>или</div>
-            <div className={styles.startEnter}>
-              <div className={styles.div7}>Войти</div>
-            </div>
-          </div>
-          <div className={styles.tradeRegistering}>
-            <b className={styles.b20}>РЕГИСТРАЦИЯ</b>
-          </div>
-          <div className={styles.tradingBroker2}>с Trading Broker</div>
-          <div className={styles.tradeFinancial}>
-            <div className={styles.div10}>
-              <div className={styles.txt}>
-                <p className={styles.forex}>Как торговать на</p>
-                <p className={styles.forex}>финансовых рынках</p>
-              </div>
-            </div>
-          </div>
-          <div className={styles.tradePrincipal}>
-            <div className={styles.principalLeft}>
-              <div className={styles.div12} onClick={handleGoHome}>Главная</div>
-            </div>
-            <div className={styles.div11}>/ Быстрый старт</div>
-          </div>
-        </div>
-      </div>
-
-
-      {/* <div className={styles.header}>
-        <div className={styles.headerLanguage}>
-          <img className={styles.vectorIcon2} alt="" src="/vector2.svg" />
-          <div className={styles.div13}>Русский</div>
-          <img className={styles.vectorIcon3} alt="" src="/vector3.svg" />
-        </div>
-        <div className={styles.headerList}>
-          <div className={styles.div16} onClick={handleQuickStart}>Быстрый старт</div>
-          <div className={styles.div15} onClick={handleDemo}>Бесплатное демо</div>
-          <div className={styles.div14} onClick={handleAbout}>О Компании</div>
-        </div>
-        <img className={styles.headerLogoIcon} onClick={handleGoHome} alt="" src="/headerlogo.svg" />
       </div> */}
-      
 
-      {/* <div className={styles.registration}>
-        <div className={styles.registrationContainer}>
-          <div className={styles.regisGoogle}>
-            <img className={styles.googlevecIcon} alt="" src="/googlevec.svg" />
-            <b className={styles.google2}>Google</b>
-          </div>
-          <div className={styles.div17}>Или зарегистрируйтесь через</div>
-          <div className={styles.regisLogging}>
-            <b className={styles.b21}>РЕГИСТРАЦИЯ</b>
-          </div>
-          <div className={styles.regisContract}>
-            <div className={styles.div18}>
-              <div className={styles.txt}>
-                <p className={styles.forex}>Я прочитал и принял соглашение:</p>
-                <p className={styles.forex}>Договор о предоставлении услуг</p>
-              </div>
-            </div>
-          </div>
-          <input className={styles.checkbox} type="checkbox" />
-          <div className={styles.regisPassword}>
-            <div className={styles.div19}>
-              <span className={styles.txt}>
-                <span>{`Пароль `}</span>
-                <span className={styles.span}>*</span>
-              </span>
-            </div>
-          </div>
-          <div className={styles.regisEmail}>
-            <div className={styles.email}>
-              <span className={styles.txt}>
-                <span>{`Email `}</span>
-                <span className={styles.span}>*</span>
-              </span>
-            </div>
-          </div>
-          <div className={styles.tabsBtn}>
-            <div className={styles.tabsBtnRight}>
-              <b className={styles.b22}>ВОЙТИ</b>
-            </div>
-            <div className={styles.tabsBtnLeft}>
-              <b className={styles.b23}>РЕГИСТРАЦИЯ</b>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 };

@@ -1,0 +1,23 @@
+.mainBeginText {
+  position: relative;
+  top: 64px;
+  bottom: 56px;
+  left: 100px;
+  letter-spacing: 1px;
+  line-height: 57.4px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  /* width: 61.25rem; */
+}
+.mainBegin {
+  position: relative;
+  width: 1620px;
+  top: 37.813rem;
+  right: 18.75rem;
+  left: 0;
+  background-color: var(--color-darkslategray-600);
+  height: 11.125rem;
+  font-size: var(--pocketoptioncom-semantic-heading-2-size);
+  font-family: var(--pocketoptioncom-montserrat-semibold-40);
+}

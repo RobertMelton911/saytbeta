@@ -1,0 +1,95 @@
+.mainContainerPrinciples {
+  position: absolute;
+  top: 58.813rem;
+  left: 1.688rem;
+  width: 99.25rem;
+  height: 42.863rem;
+}
+.principlesContent {
+  padding-top: 40px;
+  position: absolute;
+  width: 100%;
+  top: 6.5rem;
+  right: 37.813rem;
+  left: 3.438rem;
+  height: 36.363rem;
+}
+.principlesValues {
+  position: absolute;
+  width: calc(100% - 660px);
+  top: 0;
+  right: 37.813rem;
+  left: 3.438rem;
+  height: 3rem;
+  font-size: var(--pocketoptioncom-montserrat-semibold-40-size);
+  font-family: var(--pocketoptioncom-montserrat-semibold-40);
+}
+.div14 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  letter-spacing: 1px;
+  line-height: 48px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  width: 58rem;
+}
+
+.principlesContent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: start;
+}
+
+.content1,
+.content2,
+.content3,
+.content4,
+.content5,
+.content6 {
+  transition: transform 0.2s;
+}
+.content1:hover,
+.content2:hover,
+.content3:hover,
+.content4:hover,
+.content5:hover,
+.content6:hover {
+  transform: translateY(-5px); 
+}
+
+.risingIcon {
+  margin-bottom: 10px;
+  width: 65px; 
+  height: 65px;
+}
+
+.b1,
+.b2,
+.b3,
+.b4,
+.b5,
+.b6 {
+  font-size: 19px;
+  font-weight: bold;
+  color: #DDEEE8;
+  display: flex;
+  text-align: left;
+}
+
+.div8,
+.div9,
+.div10,
+.div11,
+.div12,
+.div13 {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5; 
+  letter-spacing: 1px;
+  color: #dde5e3;
+  width: 420px;
+  bottom: 6px;
+  position: relative;
+}

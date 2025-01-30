@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./profile-page.module.css";
+import HeaderMain from "../components/HeaderMain";
 
 const ProfilePage = () => {
   const navigate = useNavigate();
@@ -12,8 +13,11 @@ const ProfilePage = () => {
   const handleLogoClick = () => {
     navigate("/");
   };
+
   return (
     <div className={styles.profilePage}>
+
+      <HeaderMain />
 
       <div className={styles.delete}>
         <div className={styles.div}>Удалить счет</div>
@@ -335,7 +339,7 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <div className={styles.headerProfile}>
           <img
             className={styles.profile1Icon2}
@@ -352,7 +356,7 @@ const ProfilePage = () => {
           <div className={styles.demoAccount}>Demo account</div>
         </div>
         <img className={styles.vectorIcon} onClick={handleLogoClick} alt="" src="/vector5.svg" />
-      </div>
+      </div> */}
 
     </div>
   );

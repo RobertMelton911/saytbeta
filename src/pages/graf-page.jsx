@@ -1,22 +1,25 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./graf-page.module.css";
+import HeaderMain from "../components/HeaderMain";
+import GrafPageLeftPanel from "../components/GrafPageLeftPanel";
+import GrafPageRightPanel from "../components/GrafPageRightPanel";
+import GrafPagePairNumber from "../components/GrafPagePairNumber";
 
 const GrafPage = () => {
   const navigate = useNavigate();
 
-  const handleGoProfile = () => {
-    navigate("/profilepage");
-  };
-
-  const handleGoHome = () => {
-    navigate("/");
-  };
+  const handleGoProfile = () => {navigate("/profilepage");};
+  const handleGoHome = () => {navigate("/");};
 
   return (
     <div className={styles.grafPage}>
+      <HeaderMain />
+      <GrafPageLeftPanel />
+      <GrafPageRightPanel />
+      <GrafPagePairNumber />
 
-      <div className={styles.rightpanel}>
+      {/* <div className={styles.rightpanel}>
         <div className={styles.rightpanelContainer}>
           <div className={styles.rightpanelButtons}>
             <div className={styles.rightpanelBottonSell}>
@@ -88,9 +91,9 @@ const GrafPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className={styles.leftpanel}>
+      {/* <div className={styles.leftpanel}>
         <div className={styles.leftpanelBottomlist}>
           <div className={styles.item}>
             <div className={styles.div11}>Помощь</div>
@@ -128,9 +131,9 @@ const GrafPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <img className={styles.containerIcon4} onClick={handleGoProfile} alt="" src="/container.svg" />
         <div className={styles.link}>
           <div className={styles.container4}>
@@ -145,7 +148,7 @@ const GrafPage = () => {
           <b className={styles.deposit}>Deposit</b>
         </div>
         <img className={styles.vectorIcon7} onClick={handleGoHome} alt="" src="/vector5.svg" />
-      </div>
+      </div> */}
 
     </div>
   );
