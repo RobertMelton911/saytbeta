@@ -17,10 +17,10 @@ const SecondPage = () => {
       <SecondPageSlaid />
       <SecondPageBegin />
 
-      <SecondPageSteps />
+      {/* <SecondPageSteps /> */}
       <Footer />
       
-      {/* <div className={styles.bottomSteps}>
+      <div className={styles.bottomSteps}>
         <div className={styles.stepsSix}>
           <div className={styles.sixText}>
             <b className={styles.b1}>
@@ -89,9 +89,9 @@ const SecondPage = () => {
             />
           </div>
         </div>
-      </div> */}
+      </div>
       
-      {/* <div className={styles.topSteps}>
+      <div className={styles.topSteps}>
         <div className={styles.stepsThree}>
           <div className={styles.threeSvg}>
             <img
@@ -161,7 +161,7 @@ const SecondPage = () => {
             <b className={styles.b19}>1</b>
           </div>
         </div>
-      </div> */}
+      </div>
 
     </div>
   );
