@@ -1,0 +1,153 @@
+.a {
+    text-decoration: none;
+    position: relative;
+    line-height: 20px;
+    color: inherit;
+    flex-shrink: 0;
+  }
+  .a1 {
+    text-decoration: none;
+    position: relative;
+    line-height: 20px;
+    color: #10b981;
+    display: inline-block;
+    min-width: 52px;
+    flex-shrink: 0;
+  }
+  .pairAsset {
+    width: 285px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    /* justify-content: space-between; */
+    padding: 6px 0px;
+    box-sizing: border-box;
+    gap: 180px;
+  }
+  .audcadOtc {
+    position: relative;
+    font-size: 16px;
+    line-height: 17px;
+    font-weight: 800;
+    display: inline-block;
+    min-width: 116px;
+  }
+  .pairOpen {
+    width: 285px;
+    /* flex: 1; */
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: var(--padding-4xs) var(--padding-mini) var(--padding-6xs);
+    box-sizing: border-box;
+    gap: var(--gap-126xl);
+    font-size: var(--font-size-base);
+    color: var(--color-lightgray);
+  }
+  .separators {
+    text-decoration: none;
+    position: relative;
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--color-white);
+    display: inline-block;
+    min-width: 28px;
+  }
+  .pairOpen1 {
+    width: 285px;
+    align-self: stretch;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: var(--padding-4xs) var(--padding-mini) var(--padding-6xs);
+    gap: var(--gap-126xl);
+  }
+  .div {
+    position: relative;
+    font-size: var(--font-size-xs);
+    line-height: 20px;
+    color: var(--color-white);
+    display: inline-block;
+    min-width: 27px;
+  }
+  .div1 {
+    position: relative;
+    font-size: var(--font-size-xs);
+    line-height: 20px;
+    color: var(--color-white);
+    display: inline-block;
+    min-width: 28px;
+  }
+  .pairOpen5 {
+    width: 285px;
+    align-self: stretch;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: var(--padding-4xs) var(--padding-mini) var(--padding-5xs);
+    gap: var(--gap-126xl);
+  }
+  .div4 {
+    position: relative;
+    font-size: var(--font-size-xs);
+    line-height: 20px;
+    color: var(--color-white);
+    display: inline-block;
+    min-width: 25px;
+  }
+  .pairOpen7 {
+    width: 285px;
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: var(--padding-4xs) var(--padding-12xs) var(--padding-5xs) var(--padding-mini);
+    gap: var(--gap-xl);
+  }
+  .pairOpenParent {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--color-lightgray);
+    font-family: var(--font-inter);
+    gap: 18px;
+  }
+  .pairNumberDisclosed {
+    position: relative;
+    top: 100px;
+    left: 113px;
+    width: 315px;
+    height: 341px;
+    border-radius: 10px;
+    background-color: #212121;
+    border: 1px solid #54565f;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: var(--padding-12xs) var(--padding-smi) var(--padding-smi) 0px;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    font-size: var(--font-size-xs);
+    color: #a4a4a4;
+    font-family: var(--font-inter);
+    gap: 10px;
+  }
+  

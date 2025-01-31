@@ -5,6 +5,7 @@ import HeaderMain from "../components/HeaderMain";
 import GrafPageLeftPanel from "../components/GrafPageLeftPanel";
 import GrafPageRightPanel from "../components/GrafPageRightPanel";
 import GrafPagePairNumber from "../components/GrafPagePairNumber";
+// import GrafPagePairDisclosed from "../components/GrafPagePairDisclosed";
 
 const GrafPage = () => {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ const GrafPage = () => {
       <GrafPageLeftPanel />
       <GrafPageRightPanel />
       <GrafPagePairNumber />
+      {/* <GrafPagePairDisclosed /> */}
 
       {/* <div className={styles.rightpanel}>
         <div className={styles.rightpanelContainer}>
