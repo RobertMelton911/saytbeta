@@ -1,22 +1,34 @@
 import React, { useState, useEffect, useRef } from "react";
 import GrafPagePairDisclosed from "./GrafPagePairDisclosed";
 import styles from "./GrafPagePairNumber.module.css";
-import { useAtom } from "jotai";
-import { currencyPairsAtom } from "./GrafPagePairDisclosed.jsx";
+import { useAtom, atom } from "jotai";
+
+// Атом для хранения выбранной валютной пары
+export const currencyPairsAtom = atom({ pair: "AUD/CAD", value: "92%" });
 
 const GrafPagePairNumber = () => {
   const [currency, setCurrency] = useAtom(currencyPairsAtom);
   const [isVisible, setIsVisible] = useState(false);
   const componentRef = useRef(null);
+  const [clickedInside, setClickedInside] = useState(false); // Состояние для отслеживания клика внутри
 
   // Переключение видимости
-  const toggleComponent = () => {
-    setIsVisible(true);
+  const toggleComponent = (event) => {
+    event.stopPropagation(); // Останавливаем всплывание события
+    setClickedInside(true); // Устанавливаем флаг, что клик был внутри
+    setIsVisible((prev) => !prev); // Переключаем значение isVisible
   };
 
   // Закрытие при клике вне
   useEffect(() => {
     const handleClickOutside = (event) => {
+      // Если клик был внутри, сбрасываем флаг и не закрываем компонент
+      if (clickedInside) {
+        setClickedInside(false);
+        return;
+      }
+
+      // Если клик был вне компонента, закрываем его
       if (componentRef.current && !componentRef.current.contains(event.target)) {
         setIsVisible(false);
       }
@@ -29,7 +41,7 @@ const GrafPagePairNumber = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isVisible]);
+  }, [isVisible, clickedInside]);
 
   return (
     <div className={styles.wrapper} ref={componentRef}>
@@ -48,10 +60,10 @@ const GrafPagePairNumber = () => {
         <div className={styles.borderWrapper}>
           <div className={styles.border} />
         </div>
-      </div>
+      </div>  
 
       {/* Показываем GrafPagePairDisclosed, если isVisible === true */}
-      {isVisible && <GrafPagePairDisclosed />}
+      {isVisible && <GrafPagePairDisclosed onClose={() => setIsVisible(false)} />}
     </div>
   );
 };
