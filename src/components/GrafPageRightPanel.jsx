@@ -1,129 +1,150 @@
-import React, { useState } from "react";
+import React, { useRef, useEffect } from "react";
+import { atom, useAtom } from "jotai";
 import styles from "./GrafPageRightPanel.module.css";
+import GrafPageSelectTime from "./GrafPageSelectTime";
+import GrafPageSelectAmount from "./GrafPageSelectAmount";
+
+// Состояния для управления выбором времени и суммы
+export const selectTimeVisibleAtom = atom(false);
+export const selectedTimeAtom = atom("1мин");
+
+export const selectAmountVisibleAtom = atom(false);
+export const selectedAmountAtom = atom("5");
+
+const timeframes = ["1мин", "5мин", "10мин", "15мин", "30мин", "1час"];
+const maxAmount = 1000;
 
 const GrafPageRightPanel = () => {
-  // Начальное состояние для времени: 00:01 (0 часов, 1 минута)
-  const [time, setTime] = useState({ hours: 0, minutes: 1 });
+  const [showSelectTime, setShowSelectTime] = useAtom(selectTimeVisibleAtom);
+  const [selectedTime, setSelectedTime] = useAtom(selectedTimeAtom);
+  const [showSelectAmount, setShowSelectAmount] = useAtom(selectAmountVisibleAtom);
+  const [selectedAmount, setSelectedAmount] = useAtom(selectedAmountAtom);
 
-  // Начальное состояние для суммы: $5
-  const [amount, setAmount] = useState(5);
+  // Реfs для управления кликами вне элемента
+  const rightPanelRef = useRef(null);
+  const selectTimeRef = useRef(null);
+  const selectAmountRef = useRef(null);
+  const timeRef = useRef(null);
+  const amountRef = useRef(null);
 
-  // Форматирование времени (чч:мм)
-  const formatTime = () => {
-    return `${String(time.hours).padStart(2, "0")}:${String(time.minutes).padStart(2, "0")}`;
+  // Открытие/закрытие селекторов
+  const toggleSelectTime = (e) => {
+    e.stopPropagation();
+    setShowSelectTime((prev) => !prev);
   };
 
-  // Добавить 1 минуту
-  const addMinute = () => {
-    setTime((prev) => {
-      let newMinutes = prev.minutes + 1;
-      let newHours = prev.hours;
+  const toggleSelectAmount = (e) => {
+    e.stopPropagation();
+    setShowSelectAmount((prev) => !prev);
+  };
 
-      if (newMinutes >= 60) {
-        newMinutes = 0;
-        newHours += 1;
+  // Изменение времени кнопками +/-
+  const incrementTime = (e) => {
+    e.stopPropagation();
+    const currentIndex = timeframes.indexOf(selectedTime);
+    if (currentIndex < timeframes.length - 1) {
+      setSelectedTime(timeframes[currentIndex + 1]);
+    }
+  };
+
+  const decrementTime = (e) => {
+    e.stopPropagation();
+    const currentIndex = timeframes.indexOf(selectedTime);
+    if (currentIndex > 0) {
+      setSelectedTime(timeframes[currentIndex - 1]);
+    }
+  };
+
+  // Изменение суммы кнопками +/-
+  const incrementAmount = (e) => {
+    e.stopPropagation();
+    setSelectedAmount((prev) => Math.min(Number(prev) + 5, maxAmount).toString());
+  };
+
+  const decrementAmount = (e) => {
+    e.stopPropagation();
+    setSelectedAmount((prev) => Math.max(Number(prev) - 5, 5).toString());
+  };
+
+  // Обработка ручного ввода суммы
+  const handleAmountChange = (e) => {
+    let value = e.target.value.replace(/\D/, ""); // Удаляем все нечисловые символы
+    if (value !== "") {
+      value = Math.min(Number(value), maxAmount).toString(); // Ограничиваем максимум
+    }
+    setSelectedAmount(value);
+  };
+
+  // Закрытие всплывающих окон при клике вне них
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        showSelectTime &&
+        selectTimeRef.current &&
+        !selectTimeRef.current.contains(event.target) &&
+        timeRef.current &&
+        !timeRef.current.contains(event.target)
+      ) {
+        setShowSelectTime(false);
       }
 
-      return { hours: newHours, minutes: newMinutes };
-    });
-  };
-
-  // Уменьшить 1 минуту (не меньше 00:01)
-  const subtractMinute = () => {
-    setTime((prev) => {
-      let newMinutes = prev.minutes - 1;
-      let newHours = prev.hours;
-
-      if (newMinutes < 0) {
-        if (newHours > 0) {
-          newMinutes = 59;
-          newHours -= 1;
-        } else {
-          return prev; // Не даем уйти ниже 00:01
-        }
+      if (
+        showSelectAmount &&
+        selectAmountRef.current &&
+        !selectAmountRef.current.contains(event.target) &&
+        amountRef.current &&
+        !amountRef.current.contains(event.target)
+      ) {
+        setShowSelectAmount(false);
       }
+    };
 
-      return { hours: newHours, minutes: newMinutes };
-    });
-  };
-
-  // Добавить $1
-  const addDollar = () => {
-    setAmount((prev) => prev + 1);
-  };
-
-  // Уменьшить $1 (не меньше $1)
-  const subtractDollar = () => {
-    setAmount((prev) => (prev > 1 ? prev - 1 : prev));
-  };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showSelectTime, showSelectAmount]);
 
   return (
-  <div className={styles.rightpanel}>
-    <div className={styles.rightpanelContainer}>
-
-      <div className={styles.rightpanelButtons}>
-        <div className={styles.rightpanelBottonSell}>
-          <div className={styles.container}>
-            <b className={styles.b}>Продать</b>
+    <>
+      <div className={styles.rightPanel} ref={rightPanelRef}>
+        <div className={styles.control}>
+          <div className={styles.controlBox} ref={timeRef} onClick={toggleSelectTime}>
+            <div className={styles.label}>Время</div>
+            <div className={styles.controlButtons}>
+              <div className={styles.button} onClick={decrementTime} style={{ opacity: selectedTime === "1мин" ? 0.5 : 1 }}>
+                -
+              </div>
+              <div className={styles.valuetime}>{selectedTime}</div>
+              <div className={styles.button} onClick={incrementTime} style={{ opacity: selectedTime === "1час" ? 0.5 : 1 }}>
+                +
+              </div>
+            </div>
           </div>
-        </div>
-        <div className={styles.rightpanelBottonBuy}>
-          <div className={styles.container}>
-            <b className={styles.b}>Купить</b>
-          </div>
-        </div>
-      </div>
 
-      <div className={styles.majorityOpinion}>
-        <div className={styles.majorityOpinion1}>Majority opinion</div>
-        <div className={styles.background}>
-          <div className={styles.background1} />
-        </div>
-        <div className={styles.div}>64%</div>
-        <div className={styles.div1}>36%</div>
-      </div>
-
-      <div className={styles.rightpanelPay}>
-        <b className={styles.b2}>+92</b>
-        <b className={styles.b3}>%</b>
-        <div className={styles.div2}>$19.2</div>
-        <div className={styles.div3}>Выплата</div>
-        <div className={styles.div4}>+$9.2</div>
-        <div className={styles.div5}>Прибыль</div>
-      </div>
-
-      <div className={styles.rightpanelMoney}>
-        {/* <div className={styles.div6}>$</div> */}
-        <div className={styles.container2}>
-          <div className={styles.div7}>Сумма</div>
-        </div>
-        <div className={styles.vuiInputNumber}>
-          <img className={styles.containerIcon} onClick={addDollar} alt="" src="/container1.svg" />
-          <img className={styles.containerIcon1} onClick={subtractDollar} alt="" src="/container2.svg"  />
-          <div className={styles.input}>
-            <span>${amount}</span>
-          </div>
-        </div>
-      </div>
-      
-      <div className={styles.rightpanelTime}>
-
-        <div className={styles.container3}>
-          <div className={styles.div9}>Время</div>
-        </div>
-
-        <div className={styles.vuiInputNumber1}>
-          <img className={styles.containerIcon2} onClick={addMinute} alt="" src="/container3.svg" />
-          <img className={styles.containerIcon3} onClick={subtractMinute} alt="" src="/container4.svg" />
-          <div className={styles.input}>
-            <span>{formatTime()}</span>
+          <div className={styles.controlBox} ref={amountRef} onClick={toggleSelectAmount}>
+            <div className={styles.label}>Сумма</div>
+            <div className={styles.controlButtons}>
+              <div className={styles.button} onClick={decrementAmount} style={{ opacity: Number(selectedAmount) <= 5 ? 0.5 : 1 }}>
+                -
+              </div>
+              <input className={styles.valueInput} type="text" value={selectedAmount} onChange={handleAmountChange} onClick={(e) => e.stopPropagation()}/>
+              <div className={styles.button} onClick={incrementAmount} style={{ opacity: Number(selectedAmount) >= maxAmount ? 0.5 : 1 }}>
+                +
+              </div>
+            </div>
           </div>
         </div>
 
+        <div className={styles.actions}>
+          <div className={styles.buy}>Купить</div>
+          <div className={styles.sell}>Продать</div>
+        </div>
       </div>
 
-    </div>
-  </div>
+      {showSelectTime && <GrafPageSelectTime selectTimeRef={selectTimeRef} rightPanelElement={rightPanelRef.current} />}
+      {showSelectAmount && <GrafPageSelectAmount selectAmountRef={selectAmountRef} rightPanelElement={rightPanelRef.current} />}
+    </>
   );
 };
 

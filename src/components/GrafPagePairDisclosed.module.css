@@ -1,10 +1,5 @@
-/* GrafPagePairDisclosed.module.css */
-
 /* Основные стили для компонента */
 .pairNumberDisclosed {
-  position: absolute;
-  top: 130px;
-  left: 113px;
   width: 315px;
   max-height: 345px;
   border-radius: 10px;

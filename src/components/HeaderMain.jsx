@@ -2,34 +2,39 @@ import React from "react";
 import styles from "./HeaderMain.module.css";
 import { useNavigate } from "react-router-dom";
 
-const HeaderRegis = () => {
+const HeaderMain = () => {
   const navigate = useNavigate();
 
-  const handleGoProfile = () => {navigate("/profilepage");};
-  const handleDemoAccount = () => {navigate("/grafpage");};
-  const handleGoHome = () => {navigate("/");};
+  const handleNavigation = (path) => navigate(path);
 
   return (
-  <div className={styles.header}>
+    <header className={styles.header}>
+      <div className={styles.container}>
+        {/* Логотип */}
+        <img className={styles.logo} onClick={() => handleNavigation("/")} alt="Home" src="/vector5.svg" />
 
-    <img className={styles.vectorIcon} onClick={handleGoHome} alt="" src="/vector5.svg" />
-    
-    <div className={styles.headerAcc} onClick={handleDemoAccount}>
-      <b className={styles.b}>$1,000.00</b>
-      <img className={styles.accSvgIcon} alt="" src="/accsvg.svg" />
-      <div className={styles.demoAccount}>Demo account</div>
-    </div>
+        <div className={styles.rightSection}>
+          {/* Секция аккаунта */}
+          <div className={styles.account} onClick={() => handleNavigation("/grafpage")} >
+            <span className={styles.demoText}>Demo account</span>
+            <b className={styles.balance}>$1,000.00</b>
+          </div>
 
-    <div className={styles.headerDeposit}>
-      <b className={styles.deposit}>Deposit</b>
-    </div>
+          {/* Кнопка депозита */}
+          <button className={styles.depositButton}>
+            <div className={styles.depositText}>Deposit</div>
+          </button>
 
-    <div className={styles.headerProfile} onClick={handleGoProfile}>
-      <img className={styles.profile1Icon2} alt="" src="/profile-12@2x.png" />
-    </div>
-
-  </div>
+          {/* Профиль */}
+          <div className={styles.profile} onClick={() => handleNavigation("/profilepage")} >
+            <img className={styles.profileImage} alt="Profile" src="/profile-12@2x.png" />
+          </div>
+        </div>
+      </div>
+    </header>
   );
 };
 
-export default HeaderRegis;
+export default HeaderMain;
+
+

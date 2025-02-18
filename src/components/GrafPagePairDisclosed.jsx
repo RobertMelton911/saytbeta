@@ -1,9 +1,9 @@
+// GrafPagePairDisclosed.jsx
 import React, { useEffect, useRef } from "react";
 import styles from "./GrafPagePairDisclosed.module.css";
 import { useAtom } from "jotai";
 import { currencyPairsAtom } from "./GrafPagePairNumber";
 
-// Данные о валютных парах
 const currencyPairs = [
   { pair: "AUD/CAD", value: "92%" },
   { pair: "AUD/USD", value: "92%" },
@@ -19,38 +19,45 @@ const GrafPagePairDisclosed = ({ onClose }) => {
   const [, setCurrency] = useAtom(currencyPairsAtom);
   const componentRef = useRef(null);
 
-  // Закрытие при клике вне компонента
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (componentRef.current && !componentRef.current.contains(event.target)) {
-        onClose();
+    const handleClickOutside = (e) => {
+      if (componentRef.current && !componentRef.current.contains(e.target)) {
+        // Проверяем, что клик не был по родительскому компоненту
+        const parentElement = document.querySelector('[class*="pairNumberWrap"]');
+        if (!parentElement?.contains(e.target)) {
+          onClose();
+        }
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    // Используем setTimeout, чтобы избежать немедленной обработки события
+    setTimeout(() => {
+      document.addEventListener("mousedown", handleClickOutside);
+    }, 0);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [onClose]);
 
+  const handlePairClick = (item) => {
+    setCurrency(item);
+    onClose();
+  };
+
   return (
     <div className={styles.pairNumberDisclosed} ref={componentRef}>
-      {/* Заголовки, которые не скролятся */}
       <div className={styles.pairAsset}>
         <a className={styles.a}>Актив</a>
         <a className={styles.a1}>Выплота</a>
       </div>
 
-      {/* Секция с валютными парами, которая скролится */}
       <section className={styles.pairOpenParent}>
         {currencyPairs.map((item, index) => (
           <div
             key={index}
             className={`${styles.pairOpen} ${index >= 4 ? styles.pairOpen5 : ""}`}
-            onClick={() => {
-              setCurrency(item);
-              onClose();
-            }}
+            onClick={() => handlePairClick(item)}
           >
             <div className={styles.audcadOtc}>{item.pair} OTC</div>
             <div className={styles.separators}>{item.value}</div>

@@ -1,0 +1,128 @@
+.information {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  background-color: #1f2937;
+  width: 1410px;
+  padding: 14px 15px 15px 15px;
+  /* margin-bottom: 20px; */
+}
+
+.informationTop {
+  display: flex;
+  align-items: center;
+  padding-bottom: 3px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #10b981;
+  width: fit-content;
+}
+
+.informationTitle {
+  font-size: 14px;
+  color: #ebedf0;
+  user-select: none;
+}
+
+.informationBody {
+  display: flex;
+  gap: 20px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 50%;
+}
+
+.field {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  background-color: #2b3544;
+  border-radius: 7px;
+  padding: 5px 10px;
+  height: 30px;
+}
+
+.fieldLabel {
+  color: #8b97a3;
+  width: 48%; /* Почти половина ширины строки */
+  user-select: none;
+}
+
+.fieldValue {
+  color: #dd1144;
+  cursor: pointer;
+  text-align: center;
+  /* display: inline-block;  */
+  /* margin: 0 130px;  */
+}
+
+.emptyField {
+  font-style: italic;
+  color: #dd1144;
+}
+
+.fieldValue:hover {
+  color: #10b981;
+}
+
+.filled {
+  color: #ebedf0; /* Белый цвет для введенных данных */
+}
+
+.editContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #2b3544;
+  border-radius: 7px;
+  padding: 5px 0;
+  width: 40%; /* Оставшееся пространство */
+}
+
+.inputField {
+  flex-grow: 1;
+  background: #374151;
+  border: 1px solid #10b981;
+  border-radius: 4px;
+  color: #ebedf0;
+  outline: none;
+  padding: 5px 10px;
+  text-align: left; /* Текст вводится с начала */
+}
+
+.saveButton {
+  border: 1px solid #10b981;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #10b981;
+  padding: 0 2px 4px 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: none; /* Без фонового цвета */
+}
+
+.cancelButton {
+  border: 1px solid #10b981;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #10b981;
+  padding-bottom: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: none; /* Без фонового цвета */
+}
+
+.cancelButton {
+  border-color: #dd1144;
+  color: #dd1144;
+}

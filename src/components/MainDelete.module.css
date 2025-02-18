@@ -1,0 +1,28 @@
+.delete {
+  border-radius: 4px;
+  background-color: rgba(129, 42, 45, 0.15);
+  border: 1px solid #812a2d;
+  width: 1074px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer; /* Курсор при наведении */
+  transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Плавные переходы */
+}
+
+.delete:hover {
+  background-color: rgba(129, 42, 45, 0.3); /* Легкое затемнение фона */
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.4); /* Мягкое свечение красным */
+}
+
+.delete:hover .div {
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.6); /* Свечение текста */
+}
+
+.div {
+  font-size: 14px;
+  font-weight: 500;
+  transition: text-shadow 0.3s ease; /* Плавное свечение текста */
+}

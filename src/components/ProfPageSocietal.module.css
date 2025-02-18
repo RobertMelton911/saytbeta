@@ -1,0 +1,161 @@
+.societal {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  background-color: #1f2937;
+  width: 1410px;
+  padding: 15px 15px 15px 15px;
+  gap: 10px;
+  user-select: none; /* Запрет выделения текста */
+}
+
+.societalTop {
+  display: flex;
+  align-items: center;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #10b981;
+  width: fit-content;
+}
+
+.societalTitle {
+  font-size: 14px;
+  color: #ebedf0;
+  user-select: none; /* Запрет выделения текста */
+}
+
+.societalBodyContainer {
+  width: 1410px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 4px;
+}
+
+.societalBody {
+  width: 680px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 15px;
+}
+
+.avatarLabel {
+  color: #8b97a3;
+  user-select: none; /* Запрет выделения текста */
+}
+
+.avatarImg1 {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #374151;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile1Icon1 {
+  width: 40px; /* Размер для стандартной аватарки */
+  height: 40px; /* Размер для стандартной аватарки */
+  object-fit: cover; /* Сохраняет пропорции */
+}
+
+.profile1Icon1.fullCircle {
+  width: 100%; /* Заполняет весь круг для выбранной аватарки */
+  height: 100%; /* Заполняет весь круг для выбранной аватарки */
+}
+
+.avatarBtn {
+  width: 695px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(48, 153, 245, 0.05);
+  border: 1px dashed rgba(16, 185, 129, 0.96);
+  border-radius: 4px;
+  box-shadow: 0px 0px 8px rgba(48, 153, 245, 0.5);
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.avatarBtn:hover {
+  box-shadow: 0px 0px 16px rgba(16, 185, 129, 0.8); /* Усиленная подсветка */
+  border-color: #10b981; /* Зеленая граница */
+}
+
+.avatarText {
+  font-weight: 400;
+  font-size: 14px;
+  color: #EBEDF0;
+  text-align: center;
+  user-select: none; /* Запрет выделения текста */
+}
+
+.bodyNickname {
+  width: 665px;
+  height: 40px;
+  background-color: #2b3544;
+  border-radius: 7px;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.nicknameLabel {
+  color: #8b97a3;
+  user-select: none; /* Запрет выделения текста */
+}
+
+.nicknameValue {
+  color: #ebedf0;
+  user-select: none; /* Запрет выделения текста */
+}
+
+.bodyHide {
+  width: 665px;
+  height: 40px;
+  background-color: #2b3544;
+  border-radius: 7px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hideLabel {
+  color: #8b97a3;
+  user-select: none; /* Запрет выделения текста */
+}
+
+.toggleSwitch {
+  width: 40px;
+  height: 24px;
+  background-color: #374151;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 3px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.toggleSlider {
+  width: 18px;
+  height: 18px;
+  background-color: #8b97a3;
+  border-radius: 50%;
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.toggleSlider.toggled {
+  transform: translateX(19px);
+  background-color: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+}

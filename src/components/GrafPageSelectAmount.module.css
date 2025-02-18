@@ -1,0 +1,33 @@
+.selectAmount {
+    position: absolute;
+    width: 160px;
+    border-radius: 12px;
+    background-color: #2a2b30;
+    border: 1px solid #54565f;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #f6f7f7;
+    font-family: "Nunito Sans";
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  .amountGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .amountItem {
+    background-color: #54565f;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  
+  .amountItem:hover {
+    background-color: #6b6d77;
+  }
+  

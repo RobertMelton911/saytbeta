@@ -1,107 +1,102 @@
+/* Основной хедер */
 .header {
-  position: absolute;
   width: 100%;
-  top: 0;
-  right: 0;
-  left: 0;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 65px;
   background-color: var(--color-gray-200);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   height: 4.063rem;
-  font-size: var(--font-size-mini);
-  color: var(--pocketoptioncom-white);
-  font-family: var(--pocketoptioncom-semantic-link);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.vectorIcon {
-  position: absolute;
-  top: 1.156rem;
-  left: 1.25rem;
+/* Контейнер */
+.container {
+  width: 100%;
+  max-width: 1920px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+/* Логотип */
+.logo {
   width: 12.663rem;
   height: 1.75rem;
   cursor: pointer;
 }
 
-.headerAcc {
-  position: absolute;
-  top: calc(50% - 21.5px);
-  left: 99.813rem;
-  width: 7.875rem;
-  height: 2.5rem;
-  font-size: var(--pocketoptioncom-nunito-sans-bold-20-upper-size);
-  color: var(--color-whitesmoke-100);
+/* Правая секция */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Секция аккаунта */
+.account {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   cursor: pointer;
+  gap: 0.25rem;
 }
 
-.b {
-  position: absolute;
-  top: 1.25rem;
-  left: 0;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-  width: 6.063rem;
-  height: 1.25rem;
-}
-
-.accSvgIcon {
-  position: absolute;
-  height: 40%;
-  width: 12.7%;
-  top: 0;
-  right: 6.35%;
-  bottom: 60%;
-  left: 80.95%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-
-.demoAccount {
-  position: absolute;
-  top: 0;
-  left: 0;
+.demoText {
   font-size: var(--font-size-mini);
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-  width: 6.188rem;
-  height: 1rem;
+  color: var(--color-whitesmoke-100);
 }
 
-.headerDeposit {
-  position: absolute;
-  top: 0.813rem;
-  left: 108.2rem;
-  border-radius: var(--br-3xs);
+.balance {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--color-whitesmoke-100);
+}
+
+/* Кнопка депозита */
+.depositButton {
   background: linear-gradient(90deg, #4ade80, #16a34a);
+  color: white;
+  border: none;
+  border-radius: var(--br-3xs);
   width: 6.25rem;
   height: 2.375rem;
-  overflow: hidden;
   cursor: pointer;
+
+  /* Центрирование текста */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Анимация */
+  transition: transform 0.2s ease-in-out;
 }
 
-.deposit {
-  position: absolute;
-  top: 0.688rem;
-  left: 1.438rem;
-  line-height: 15px;
+.depositButton:hover {
+  transform: scale(1.05); /* Увеличение на 5% */
 }
 
-.headerProfile {
-  position: absolute;
-  top: 0.625rem;
-  left: calc(50% + 895px);
-  border-radius: var(--br-31xl);
+/* Текст в кнопке депозита */
+.depositText {
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1; /* Устранение "дёргания" */
+}
+
+/* Профиль */
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--color-darkslategray-100);
   width: 2.813rem;
   height: 2.813rem;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-.profile1Icon2 {
-  position: absolute;
-  top: 0.688rem;
-  left: 0.688rem;
+.profileImage {
   width: 1.438rem;
   height: 1.438rem;
   object-fit: cover;

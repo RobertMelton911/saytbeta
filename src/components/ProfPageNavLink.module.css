@@ -1,0 +1,53 @@
+.navLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  background-color: #1f2937;
+  width: 715px;
+  height: 46px;
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.navLinkContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px;
+  position: relative;
+}
+
+.slidingBackground {
+  position: absolute;
+  height: 34px;
+  background-color: #2b3544;
+  border-radius: 20px;
+  transition: all 0.3s ease 0.22s; /* Плавный переход с задержкой */
+  z-index: 0;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  height: 34px;
+  padding: 0 15px;
+  color: #8b97a3; /* Цвет текста по умолчанию */
+  cursor: pointer;
+  z-index: 1;
+  user-select: none;
+}
+
+.linkActive {
+  color: #10b981; /* Цвет текста для активной ссылки */
+  transition: color 0.3s ease;
+}
+
+.linkText {
+  line-height: 16.8px;
+  text-transform: uppercase;
+  z-index: 1;
+}

@@ -1,95 +1,92 @@
-.audcad {
-  position: relative;
-  line-height: 20px;
-  font-weight: 600;
-}
-.audcadWrapper {
+/* CSS стили */
+.pairContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 0px 1px 0px 0px;
 }
-.separator1 {
-  position: relative;
-  line-height: 20px;
-  font-weight: 600;
-  display: inline-block;
-  min-width: 17.8px;
-}
-.separatorParent {
+
+.pairNumberWrap {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0 0 9px;
+  padding: 7px 15px;
+  background-color: #212121;
+  border: 1px solid #54565f;
+  border-radius: 10px;
+  width: 164px;
+  height: 22px;
+  cursor: pointer;
+  user-select: none;
+  gap: 5px;
 }
-.otc {
-  height: 7px;
-  flex: 1;
-  position: relative;
-  line-height: 7px;
+
+.dropdown {
+  display: flex;
+  margin: 15px 0 0 9px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  visibility: hidden;
+}
+
+.dropdownVisible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.dropdownHidden {
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+}
+
+.currencyContainer {
+  display: flex;
+  gap: 2px;
+}
+
+.currencyPair {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: #d1d4dc;
+}
+
+.currencyValue {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
+  color: #d1d4dc;
+}
+
+.otcWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #505050;
+  border-radius: 10px;
+  padding: 1px 5px;
+}
+
+.otc {
+  font-size: 10px;
+  font-weight: 600;
+  color: #d1d4dc;
+}
+
+.arrowWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.otcWrapper {
-  border-radius: 10px;
-  background-color: #505050;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 2px 3px 2px 4px;
+
+.arrow {
+  transition: transform 0.3s ease;
 }
-.pairNumberWrapInner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 4.2px 9px 0px 0px;
-  text-align: center;
-  font-size: 10px;
-  font-family:  "Open Sans"
+
+.rotatedArrow {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }
-.border {
-  width: 8.8px;
-  height: 9px;
-  position: relative;
-  border-right: 1.3px solid #d1d4dc;
-  border-bottom: 1.3px solid #d1d4dc;
-  box-sizing: border-box;
-  transform: rotate(43.8deg);
-}
-.borderWrapper {
-  height: 13.5px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 1.3px 4px 0px 0px;
-  box-sizing: border-box;
-}
-.pairNumberWrap {
-  position: relative;
-  top: 85px;
-  left: 113px;
-  border-radius: 10px;
-  background-color: #212121;
-  border: 1px solid #54565f;
-  box-sizing: border-box;
-  width: 192px;
-  overflow-x: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 7px 10px 6px 15px;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  font-size: 16px;
-  color: #d1d4dc;
-  font-family: Inter;
-  cursor: pointer;
-}
+
+

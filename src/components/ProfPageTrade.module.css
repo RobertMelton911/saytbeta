@@ -1,0 +1,269 @@
+.trade {
+  width: 369px;
+  height: 711px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  background-color: #1f2937;
+  padding: 15px 10px 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+.tradeTopWrapper {
+  padding: 0 5px;
+}
+
+.tradeTop {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.tradeTitle {
+  line-height: 19.6px;
+  color: #ebedf0;
+  font-size: 16px;
+  border-bottom: 1px solid #10b981;
+  padding-bottom: 3px;
+}
+
+.tradeBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 11px 0 9.4px;
+  border-radius: 0 0 5px 5px;
+  background-color: #1f2937;
+}
+
+.tradeBodyInner {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 4px 12px 5px;
+}
+
+.frameParent {
+  display: flex;
+  flex-direction: column;
+  gap: 19.5px;
+  width: 100%;
+}
+
+.frameWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0 22px 0 20px;
+}
+
+.avatarImgParent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.avatarImg {
+  width: 130px;
+  height: 130px;
+  border-radius: 75px;
+  background-color: #374151;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile1Icon {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.bodyTitleWrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 47px 0 48px;
+}
+
+.bodyTitle {
+  height: 25px;
+  border-bottom: 1px solid #10b981;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.user {
+  line-height: 22.4px;
+  color: #ebedf0;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balanceInfoParent {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
+
+.balanceInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.div1, .a {
+  line-height: 20px;
+  color: #ebedf0;
+  font-size: 14px;
+}
+
+.a {
+  text-decoration: none;
+}
+
+.idValueParent {
+  display: flex;
+  flex-direction: column;
+  gap: 12.5px;
+}
+
+.idValue, .balanceValue {
+  line-height: 20px;
+  color: #ebedf0;
+  font-size: 14px;
+}
+
+.balanceValueWrapper {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 16px 0 28px;
+}
+
+.bodyAccountParent {
+  display: flex;
+  flex-direction: column;
+}
+
+.bodyAccount {
+  cursor: pointer;
+  border: 1px solid #10b981;
+  background-color: rgba(48, 153, 245, 0.05);
+  height: 36px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.div2 {
+  font-size: 14px;
+  line-height: 20px;
+  color: #ebedf0;
+  text-align: center;
+}
+
+.tableYesterdayParent {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1px 0 0;
+}
+
+.buttonGroup {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: transparent;
+  gap: 10px;
+  position: relative;
+}
+
+.buttonGroup::before {
+  content: '';
+  width: 116px;
+  height: 52px;
+  background-color: #2b3544;
+  border-radius: 25px;
+  position: absolute;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.yesterday::before {
+  transform: translateX(0);
+}
+
+.today::before {
+  transform: translateX(126px);
+}
+
+.allTime::before {
+  transform: translateX(252px);
+}
+
+.timeButton {
+  cursor: pointer;
+  width: 116px;
+  height: 52px;
+  border-radius: 25px;
+  color: #8b97a3;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.timeButton:hover {
+  color: #ebedf0;
+}
+
+.timeButtonSelected {
+  color: #ebedf0;
+}
+
+.div3 {
+  line-height: 15px;
+  z-index: 1;
+}
+
+.p {
+  margin: 0;
+}
+
+.dealsOneParent {
+  display: flex;
+  flex-direction: column;
+}
+
+.dealsOne, .dealsTwo, .dealsFour {
+  border-bottom: 2px solid #12b17d;
+  height: 22px;
+  display: flex;
+  justify-content: start;
+  padding-top: 13px;
+}
+
+.dealsTwo {
+  border-bottom-color: #ff9800;
+}
+
+.dealsFour {
+  border-bottom-color: #b00;
+}
+
+.div6, .div7, .div9, .div11, .div12 {
+  line-height: 15px;
+  color: #ebedf0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.ul {
+  margin: 0;
+  padding-left: 19px;   
+}
