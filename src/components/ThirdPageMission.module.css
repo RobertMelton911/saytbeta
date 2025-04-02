@@ -1,162 +1,140 @@
 .mainmission {
-    top: 0;
-    left: 0;
-    background: linear-gradient(111.19deg, #02274b, #02274b 5%, #012d5a);
-    width: 101.25rem;
-    height: 46.563rem;
-}
-.mainmission,
-.vectorIcon2 {
-  position: absolute;
+  position: relative;
+  background: linear-gradient(111.19deg, #073c2b, rgba(4, 31, 22, 0.2));
+  background-color: #071a14;
+  width: calc(100% - 283px); /* Учитываем ширину Registration */
+  height: 46.563rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
+
 .missionGradient {
   position: absolute;
   top: 0;
   left: 0;
-  width: 101.25rem;
-  height: 46.563rem;
+  width: 100%;
+  height: 100%;
 }
-.image2Icon {
-  top: 0;
-  height: 46.563rem;
-  object-fit: cover;
-}
-.image2Icon {
-  position: absolute;
-  left: 0;
-  width: 101.25rem;
-}
+
+/* Удаляем класс .image2Icon, так как будем использовать div с background-image */
+
 .gradient,
 .gradient1 {
   position: absolute;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-}
-.gradient {
   width: 100%;
-  right: 0;
-  left: 0;
-  background: linear-gradient(
-    86.92deg,
-    rgba(5, 53, 37, 0.5),
-    rgba(6, 34, 9, 0.1)
-  );
+  height: 100%;
 }
+
+.gradient {
+  background: linear-gradient(86.92deg, rgba(5, 53, 37, 0.5), rgba(6, 34, 9, 0.1));
+}
+
 .gradient1 {
-  width: 100.12%;
-  right: -0.06%;
-  left: -0.06%;
   background: linear-gradient(111.19deg, #073c2b, rgba(4, 31, 22, 0.2));
 }
-.missionText {
+
+/* Добавляем для div с фоновым изображением */
+.backgroundContainer {
   position: absolute;
-  width: calc(100% - 590px);
-  top: 5.313rem;
-  right: 32.188rem;
-  left: 4.688rem;
-  height: 31.5rem;
-}
-.div23,
-.div24,
-.div25,
-.div26,
-.tradingBroker3 {
-  position: absolute;
-  top: 29.163rem;
-  left: 0.563rem;
-  display: flex;
-  align-items: center;
-  width: 30.406rem;
-  height: 1.438rem;
-}
-.div24,
-.div25,
-.div26,
-.tradingBroker3 {
-  top: 27.725rem;
-  width: 62.4rem;
-}
-.div25,
-.div26,
-.tradingBroker3 {
-  top: 24.188rem;
-  left: 0.625rem;
-  width: 13.181rem;
-}
-.div26,
-.tradingBroker3 {
-  top: 22.738rem;
-  left: 0.563rem;
-  width: 57.625rem;
-}
-.tradingBroker3 {
-  top: 21.313rem;
-  left: 0.625rem;
-  width: 60.069rem;
-}
-.div27 {
-  top: 5.375rem;
-  left: 0.5rem;
-  font-size: var(--font-size-31xl);
-  letter-spacing: 2px;
-  line-height: 55px;
-  text-transform: uppercase;
-  font-weight: 600;
-  font-family: var(--pocketoptioncom-montserrat-semibold-40);
-  color: var(--pocketoptioncom-white);
-  width: 59.619rem;
-  height: 14.125rem;
-}
-.div27,
-.div28,
-.div29 {
-  position: absolute;
-  display: flex;
-  align-items: center;
-}
-.div28 {
-  top: 0.063rem;
-  left: 3.5rem;
-  white-space: pre-wrap;
-  width: 2.813rem;
-}
-.div29 {
   top: 0;
   left: 0;
-  width: 3.188rem;
-}
-.txt {
   width: 100%;
+  height: 100%;
+  background-image: url('/image-2@2x.png');
+  background-repeat: no-repeat;
+  background-size: auto 100%; /* Высота фиксирована, ширина авто */
+  background-position: center center; /* Начальная позиция */
+  transition: background-position 0.3s ease;
 }
-.forex {
-  margin: 0;
+
+.missionText {
+  position: relative;
+  max-width: 1200px;
+  padding: 2rem;
+  text-align: left;
+  color: var(--pocketoptioncom-white);
+  z-index: 2;
+  margin-right: 28rem;
 }
-.principalLeft,
-.tradePrincipal {
-  position: absolute;
-  top: 0;
-  height: 1.188rem;
-}
-.principalLeft {
-  width: calc(100% - 124px);
-  right: 7.75rem;
-  left: 0;
-  border-bottom: 1px solid var(--color-mediumseagreen-300);
-  box-sizing: border-box;
-  color: var(--color-mintcream);
-  cursor: pointer;
-  transition: border-bottom 0.3s ease, color 0.3s ease;
-}.principalLeft:hover{
-  border-bottom-color: transparent; /* Полоска исчезает плавно */
+
+.div27 {
+  font-size: 3rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 0.1;
 }
 
 .tradePrincipal {
-  top: 15px;
-  width: calc(100% - 857px);
-  right: 52.938rem;
-  left: 0.625rem;
-  font-size: var(--pocketoptioncom-semantic-link-size);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
   color: var(--color-lightslategray-100);
+  padding-bottom: 1rem;
+}
+
+.div29 {
+  color: #DDEEE8;
+}
+
+.div24 {
+  padding-top: 25px;
+}
+
+.principalLeft {
+  border-bottom: 1px solid var(--color-mediumseagreen-300);
+  cursor: pointer;
+  transition: border-bottom 0.3s ease, color 0.3s ease;
+}
+
+.principalLeft:hover {
+  border-bottom-color: transparent;
+}
+
+@media (max-width: 1200px) {
+  .mainmission {
+    height: auto;
+    padding-bottom: 3rem;
+  }
+  .missionText {
+    padding: 1.5rem;
+  }
+  .div27 {
+    font-size: 1.75rem;
+  }
+  .backgroundContainer {
+    background-position: 60% center; /* Смещение фона вправо */
+  }
+}
+
+@media (max-width: 768px) {
+  .missionText {
+    text-align: center;
+  }
+  .div27 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  .tradePrincipal {
+    flex-direction: column;
+    align-items: center;
+  }
+  .backgroundContainer {
+    background-position: 70% center; /* Еще большее смещение вправо */
+  }
+}
+
+@media (max-width: 480px) {
+  .div27 {
+    font-size: 1.25rem;
+  }
+  .missionText {
+    padding: 1rem;
+  }
+  .backgroundContainer {
+    background-position: 80% center; /* Максимальное смещение вправо */
+  }
 }

@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./ThirdPageClients.module.css";
 
-const typingText = `Качество обслуживания клиентов остается нашим главным приоритетом с момента основания.
-Мы стараемся не только обеспечивать безупречную поддержку, но и внимательно прислушиваться к отзывам пользователей.
+const typingText = `
+Качество обслуживания клиентов остается нашим главным приоритетом с момента основания.
+Мы стараемся не только обеспечивать безупречную поддержку, но и внимательно
+прислушиваться к отзывам пользователей.
 Множество замечательных идей были вдохновлены именно нашими клиентами.
 От трейдеров и для трейдеров!
 
@@ -68,16 +70,16 @@ const ThirdPageClients = () => {
 
   return (
     <div className={styles.mainContainerClients}>
-      <div className={styles.clientsRight} ref={clientsRightRef}>
-        <p className={styles.typingEffect}>{typedText}
-        <span className={styles.highlight}>{highlightText}</span>
-        </p>
+      <div className={styles.clientsRightContainer}>
+        <div className={styles.clientsRightWrapper}>
+          <div className={styles.clientsRight} ref={clientsRightRef}>
+            <p className={styles.typingEffect}>{typedText}
+            <span className={styles.highlight}>{highlightText}</span>
+            </p>
+          </div>
+        </div>
       </div>
-        <img
-          className={styles.rightQuotesIcon}
-          alt=""
-          src="/rightquotes.svg"
-        />
+      <img className={styles.rightQuotesIcon} alt="" src="/rightquotes.svg"/>
       <div className={styles.clientsLeft}>
         <div className={styles.div22}>
           <span className={styles.txt}>

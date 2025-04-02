@@ -1,25 +1,31 @@
 .mainContainerPrinciples {
-  position: absolute;
-  top: 58.813rem;
+  position: relative;
+  top: 18.813rem;
   left: 1.688rem;
-  width: 99.25rem;
+  /* width: 99.25rem; */
   height: 42.863rem;
+  display: flex;
+  justify-content: center;
 }
 .principlesContent {
   padding-top: 40px;
-  position: absolute;
-  width: 100%;
+  position: relative;
+  /* width: 100%; */
   top: 6.5rem;
-  right: 37.813rem;
-  left: 3.438rem;
+  right: 10rem;
+  /* left: 3.438rem; */
   height: 36.363rem;
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
 }
 .principlesValues {
-  position: absolute;
-  width: calc(100% - 660px);
-  top: 0;
-  right: 37.813rem;
-  left: 3.438rem;
+  position: relative;
+  /* width: calc(100% - 660px); */
+  /* top: 0; */
+  right: 101rem;
+  /* left: 10rem; */
+  /* bottom: 20rem; */
   height: 3rem;
   font-size: var(--pocketoptioncom-montserrat-semibold-40-size);
   font-family: var(--pocketoptioncom-montserrat-semibold-40);

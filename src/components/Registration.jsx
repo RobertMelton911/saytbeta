@@ -1,52 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Registration.module.css";
 
 const Registration = () => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleAgreementClick = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const handleAgreementLinkClick = (e) => {
+    e.stopPropagation(); // Предотвращаем всплытие события
+    // Здесь будет перенаправление на страницу с договором
+    console.log("Переход на страницу с договором");
+  };
+
   return (
       <div className={styles.registration}>
+
         <div className={styles.registrationContainer}>
-          <div className={styles.regisGoogle}>
-            <img className={styles.googlevecIcon} alt="" src="/googlevec.svg" />
-            <b className={styles.google}>Google</b>
-          </div>
-          <div className={styles.div16}>Или зарегистрируйтесь через</div>
-          <div className={styles.regisLogging}>
-            <b className={styles.b29}>РЕГИСТРАЦИЯ</b>
-          </div>
-          <div className={styles.regisContract}>
-            <div className={styles.div17}>
-              <div className={styles.txt}>
-                <p className={styles.forex}>Я прочитал и принял соглашение:</p>
-                <p className={styles.forex}>Договор о предоставлении услуг</p>
-              </div>
-            </div>
-          </div>
-          <input className={styles.checkbox} type="checkbox" />
-          <div className={styles.regisPassword}>
-            <div className={styles.div18}>
-              <div className={styles.txt}>
-                <span>{`Пароль `}</span>
-                <span className={styles.span}>*</span>
-              </div>
-            </div>
-          </div>
-          <div className={styles.regisEmail}>
-            <div className={styles.email}>
-              <div className={styles.txt}>
-                <span>{`Email `}</span>
-                <span className={styles.span}>*</span>
-              </div>
-            </div>
-          </div>
+
+          {/* Секция с табами (РЕГИСТРАЦИЯ/ВОЙТИ) */}
           <div className={styles.tabsBtn}>
-            <div className={styles.tabsBtnRight}>
-              <b className={styles.b30}>ВОЙТИ</b>
-            </div>
             <div className={styles.tabsBtnLeft}>
               <b className={styles.b31}>РЕГИСТРАЦИЯ</b>
             </div>
+            <div className={styles.tabsBtnRight}>
+              <b className={styles.b30}>ВОЙТИ</b>
+            </div>
           </div>
+
+          {/* Поле ввода Email */}
+          <div className={styles.regisEmail}>
+            <input className={styles.input} type="email" placeholder="Email *" />
+          </div>
+
+          {/* Поле ввода Пароль */}
+          <div className={styles.regisPassword}>
+            <input className={styles.input} type="password" placeholder="Пароль *" />
+          </div>
+
+          {/* Секция с чекбоксом и соглашением */}
+          <div className={styles.checkboxContainer} onClick={handleAgreementClick}>
+            <div className={styles.customCheckbox}>
+              {isChecked && <div className={styles.checkmark}></div>}
+            </div>
+            <div className={styles.agreementTextContainer}>
+              <span className={styles.agreementText}>Я прочитал и принял соглашение:</span>
+              <span 
+                className={styles.agreementLink} 
+                onClick={handleAgreementLinkClick}
+              >
+                Договор о предоставлении услуг
+              </span>
+            </div>
+          </div>
+
+          {/* Кнопка РЕГИСТРАЦИЯ */}
+          <div className={styles.regisLogging}>
+            <b className={styles.b29}>РЕГИСТРАЦИЯ</b>
+          </div>
+          
+          {/* Текст альтернативного входа */}
+          <div className={styles.div16}>Или зарегистрируйтесь через</div>
+
+          {/* Кнопка Google */}
+          <div className={styles.regisGoogle}>
+            <img className={styles.googlevecIcon} alt="" src="/googlevec.svg" />
+            <b className={styles.google}>Google</b>
+          </div>          
+          
         </div>
+
       </div>
   );
 };

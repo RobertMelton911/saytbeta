@@ -2,98 +2,57 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(5, 53, 37, 0.05),
-    rgba(16, 185, 129, 0.6)
-  );
-  width: 101.25rem;
+  width: calc(100% - 443px); /* Учитываем ширину Registration */
   height: 4.475rem;
+  background: linear-gradient(0deg, rgba(5, 53, 37, 0.05), rgba(16, 185, 129, 0.6));
   font-size: var(--pocketoptioncom-nunito-sans-bold-17-size);
   color: var(--pocketoptioncom-white);
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5rem;
 }
-.headerLanguage {
-  position: absolute;
-  width: calc(100% - 1496px);
-  top: 1.656rem;
-  right: 5.281rem;
-  left: 88.219rem;
-  height: 1.563rem;
-  cursor: pointer;
-}
-.headerList {
-  position: absolute;
-  top: 1.688rem;
-  left: 34.375rem;
-  width: 38.188rem;
-  height: 1.5rem;
-  text-align: center;
-}
+
 .headerLogoIcon {
-  position: absolute;
-  top: 1.5rem;
-  left: 5.313rem;
   width: 13.563rem;
   height: 1.875rem;
   cursor: pointer;
 }
-.vectorIcon7 {
-  position: absolute;
-  height: 25.2%;
-  width: 10%;
-  top: 38.8%;
-  right: 5.48%;
-  bottom: 36%;
-  left: 84.52%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-  transition: color 0.3s;
+
+.headerList {
+  display: flex;
+  gap: 6rem;
+  text-align: center;
 }
-.div12 {
-  position: absolute;
-  top: 0.094rem;
-  left: 1.875rem;
-  transition: color 0.3s;
-}
-.div12:hover {
-  color: #0FD895
-}
-.vectorIcon8 {
-  position: absolute;
-  height: 76.8%;
-  width: 15.48%;
-  top: 12.8%;
-  right: 84.19%;
-  bottom: 10.4%;
-  left: 0.32%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.div13,
-.div14,
-.div15 {
-  position: absolute;
-  cursor: pointer;
-  top: 0.031rem;
-  left: 31.063rem;
+
+.div15, .div14, .div13 {
   font-weight: 500;
+  cursor: pointer;
   transition: color 0.5s, filter 0.5s;
 }
-.div13:hover,
-.div14:hover,
-.div15:hover{
+
+.div15:hover, .div14:hover, .div13:hover {
   color: #0FD895;
   backdrop-filter: blur(1px);
 }
-.div14,
-.div15 {
-  top: 0.063rem;
-  left: 15.438rem;
+
+.headerLanguage {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
 }
-.div15 {
-  left: 1.063rem;
-  color: var(--color-whitesmoke-200);
+
+.vectorIcon8 {
+  width: 18px;
+  height: 18px;
+}
+
+.vectorIcon7 {
+  width: 15px;
+  height: 15px;
+}
+.div12:hover {
+  color: #0FD895;
 }

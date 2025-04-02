@@ -1,222 +1,223 @@
+/* Основной контейнер - настраивает позицию и размер всего компонента */
 .registration {
-    position: fixed;
-    top: 0;
-    left: 101.25rem;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    background-color: var(--color-gray-200);
-    width: 18.75rem;
-    text-align: center;
-    font-size: var(--font-size-sm);
-    color: var(--color-lightslategray-100);
-    z-index: 100;
-    height: 60rem;
-}
-.registrationContainer,
-.tabsBtn {
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 0;
-  width: 18.75rem;
+  right: 0;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: #1e2330; /* Цвет фона - можно менять */
+  width: 18.75rem; /* Ширина компонента - можно менять */
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-lightslategray-100);
+  z-index: 100;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .registrationContainer {
-    height: 32.5rem;
+  width: 100%;
+  max-width: 18.75rem; /* Максимальная ширина содержимого - можно менять */
 }
-.regisGoogle {
-    position: absolute;
-    width: calc(100% - 50px);
-    top: calc(50% + 214px);
-    right: 1.875rem;
-    left: 1.25rem;
-    border-radius: var(--br-xl);
-    background-color: var(--pocketoptioncom-white);
-    height: 2.063rem;
-    color: var(--color-dimgray-100);
-    cursor: pointer;
-}
-.googlevecIcon {
-    position: absolute;
-    height: 51.82%;
-    width: 6.68%;
-    top: 23.64%;
-    right: 57.64%;
-    bottom: 24.55%;
-    left: 35.68%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-}
-.google {
-    position: absolute;
-    top: 0.438rem;
-    left: calc(50% - 14.1px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.95rem;
-    height: 1.188rem;
-}
-.div16 {
-    position: relative;
-    top: 27.1rem;
-    left: 1.188rem;
-    font-size: var(--pocketoptioncom-nunito-sans-bold-17-size);
-    color: var(--pocketoptioncom-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 15.688rem;
-    height: 1.375rem;
-}
-.b29 {
-    position: absolute;
-    top: 1.156rem;
-    left: 3.781rem;
-    line-height: 12px;
-}
-.regisLogging {
-    position: absolute;
-    top: 22.063rem;
-    left: 1.25rem;
-    cursor: pointer;
-    border-radius: var(--br-xl);
-    background: linear-gradient(0deg, #10b981, #0a6043);
-    width: 15.625rem;
-    height: 3.063rem;
-    font-size: var(--pocketoptioncom-nunito-sans-bold-16-upper-size);
-    color: var(--pocketoptioncom-white);
-    font-family: var(--pocketoptioncom-montserrat-semibold-40);
-}
-.regisContract {
-    position: absolute;
-    top: 17.375rem;
-    left: 3.063rem;
-    border-bottom: 1px solid var(--color-mediumseagreen-300);
-    box-sizing: border-box;
-    width: 13.813rem;
-    height: 2.5rem;
-    text-align: left;
-    color: var(--color-mintcream);
-    overflow: hidden;
-    cursor: pointer;
-    transition: border-bottom 0.3s ease;
-}
-.regisContract:hover {
-    border-bottom-color: transparent;
-}
-.div17 {
-    position: absolute;
-    height: 75%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    line-height: 17.6px;
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-}
-.txt {
-    width: 100%; 
-}
-.forex {
-    margin: 0;
-}
-.checkbox {
-    position: relative;
-    top: 255.1px;
-    right: 123px;
-    margin: 0;
-    height: 1rem;
-    width: 0.938rem;
-    cursor: pointer;
-}
-.regisPassword {
-    position: absolute;
-    width: calc(100% - 50px);
-    top: 11.75rem;
-    right: 1.875rem;
-    left: 1.25rem;
-    border-radius: var(--br-xl);
-    border: 2px solid var(--color-mintcream);
-    box-sizing: border-box;
-    height: 3.125rem;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-4xl);
-}
-.div18 {
-    position: absolute;
-    top: 0.875rem;
-    left: calc(50% - 110px);
-    display: flex;
-    align-items: center;
-    width: 6.75rem;
-    height: 1.375rem;
-}
-.span {
-    color: var(--color-mediumseagreen-300);
-}
-.regisEmail {
-    position: absolute;
-    width: calc(100% - 50px);
-    top: 6.75rem;
-    right: 1.875rem;
-    left: 1.25rem;
-    border-radius: var(--br-xl);
-    border: 2px solid var(--color-mintcream);
-    box-sizing: border-box;
-    height: 3.125rem;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--font-size-4xl);
-}
-.email {
-    position: absolute;
-    top: 0.875rem;
-    left: calc(50% - 110px);
-    display: flex;
-    align-items: center;
-    width: 4.813rem;
-    height: 1.375rem;
-}
+
+/* ================ СЕКЦИЯ ТАБОВ ================ */
 .tabsBtn {
-    height: 4.188rem;
-    overflow: hidden;
-    font-family: var(--pocketoptioncom-montserrat-semibold-40);
+  display: flex;
+  width: 100%;
 }
-.tabsBtnRight {
-    position: absolute;
-    top: 0;
-    left: 141.5px;
-    background-color: var(--color-darkslategray-300);
-    width: 141.5px;
-    height: 4.188rem;
-    cursor: pointer;
-}
-.b30 {
-    position: relative;
-    top: 27px;
-    left: 43.5px;
-    line-height: 12px;
-    display: flex;
-    width: 3.819rem;
-}
+
+.tabsBtnRight,
 .tabsBtnLeft {
-    position: absolute;
-    top: 0;
-    /* left: 0; */
-    cursor: pointer;
-    background-color: var(--color-gray-200);
-    border-top: 2px solid var(--color-mediumseagreen-300);
-    box-sizing: border-box;
-    width: 141.5px;
-    height: 4.188rem;
-    color: var(--color-mediumseagreen-300);
+  flex: 1;
+  height: 4.188rem; /* Высота табов - можно менять */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.tabsBtnRight {
+  background-color: #252a38; /* Цвет неактивного таба - можно менять */
+}
+
+.tabsBtnLeft {
+  background-color: #1e2330; /* Цвет активного таба - можно менять */
+  border-top: 2px solid #10b981; /* Цвет и толщина полоски активного таба - можно менять */
+}
+
 .b31 {
+  color: #10b981; /* Цвет текста активного таба - можно менять */
+}
+
+.b30 {
+  color: #8f9ba8; /* Цвет текста неактивного таба - можно менять */
+}
+
+/* ================ ПОЛЯ ВВОДА ================ */
+.regisEmail {
+  border-radius: 22px; /* Скругление углов полей - можно менять */
+  border: 2.5px solid #e0e7e3; /* Толщина и цвет рамки полей - можно менять */
+  height: 3.125rem; /* Высота полей - можно менять */
+  width: 85%; /* Ширина полей (отступы от краев) - можно менять */
+  margin: 1rem auto; /* Отступы сверху и снизу - можно менять */
+  overflow: hidden;
+  margin-top: 2.5rem;
+}
+
+.regisPassword {
+  border-radius: 22px; /* Скругление углов полей - можно менять */
+  border: 2.5px solid #e0e7e3; /* Толщина и цвет рамки полей - можно менять */
+  height: 3.125rem; /* Высота полей - можно менять */
+  width: 85%; /* Ширина полей (отступы от краев) - можно менять */
+  margin: 1rem auto; /* Отступы сверху и снизу - можно менять */
+  overflow: hidden;
+  margin-top: 1.3rem;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  color: #8B97A3; /* Цвет текста в полях - можно менять */
+  padding: 0.1rem 1rem; /* Внутренние отступы текста - можно менять */
+  font-size: 20px; /* Размер текста в полях - можно менять */
+  user-select: none;
+}
+
+.input::placeholder {
+  color: #8f9ba8; /* Цвет плейсхолдера - можно менять */
+}
+
+/* ================ СЕКЦИЯ ЧЕКБОКСА И СОГЛАШЕНИЯ ================ */
+.checkboxContainer {
+  display: flex;
+  width: 85%; /* Ширина блока (отступы от краев) - можно менять */
+  margin: 1.5rem auto; /* Отступы сверху и снизу - можно менять */
+  align-items: flex-start;
+  text-align: left;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+/* Кастомизированный чекбокс */
+.customCheckbox {
+  width: 13px; /* Ширина чекбокса - можно менять */
+  height: 13px; /* Высота чекбокса - можно менять */
+  border: 2px solid #DDEEE8; /* Толщина и цвет рамки чекбокса - можно менять */
+  border-radius: 3px; /* Скругление углов чекбокса - можно менять */
+  margin-right: 0.5rem; /* Отступ справа от чекбокса - можно менять */
+  margin-top: 0.2rem; /* Отступ сверху - можно менять */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Галочка внутри чекбокса */
+.checkmark {
+  width: 7px; /* Ширина галочки - можно менять */
+  height: 7px; /* Высота галочки - можно менять */
+  background-color: #10b981; /* Цвет галочки - можно менять */
+  border-radius: 2px; /* Скругление углов галочки - можно менять */
+}
+
+.agreementTextContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.agreementText {
+  color: #DDEEE8; /* Цвет текста соглашения - можно менять */
+  font-size: 14px; /* Размер текста соглашения - можно менять */
+  user-select: none;
+}
+
+.agreementLink {
+  color: #DDEEE8; /* Цвет текста ссылки - можно менять */
+  font-size: 14px; /* Размер текста ссылки - можно менять */
+  border-bottom: 1px solid #10b981; /* Толщина и цвет полоски под ссылкой - можно менять */
+  display: inline-block;
+  cursor: pointer;
+  transition: border-bottom 0.3s ease;
+  padding-bottom: 2px; /* Отступ от текста до полоски - можно менять */
+  margin-top: 4px; /* Отступ между текстом соглашения и ссылкой - можно менять */
+  user-select: none;
+}
+
+.agreementLink:hover {
+  border-bottom-color: transparent;
+}
+
+/* ================ КНОПКА РЕГИСТРАЦИИ ================ */
+.regisLogging {
+  cursor: pointer;
+  border-radius: 25px; /* Скругление углов кнопки - можно менять */
+  background: linear-gradient(0deg, #0a6043, #10b981); /* Градиент кнопки - можно менять */
+  width: 85%; /* Ширина кнопки (отступы от краев) - можно менять */
+  height: 3.063rem; /* Высота кнопки - можно менять */
+  font-size: var(--pocketoptioncom-nunito-sans-bold-16-upper-size);
+  color: #fff; /* Цвет текста кнопки - можно менять */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto; /* Отступы сверху и снизу - можно менять */
+  margin-top: 1.9rem;
+  user-select: none;
+}
+
+/* ================ СЕКЦИЯ АЛЬТЕРНАТИВНОГО ВХОДА ================ */
+.div16 {
+  font-size: var(--pocketoptioncom-nunito-sans-bold-17-size);
+  color: #fff; /* Цвет текста - можно менять */
+  margin-top: 1.5rem; /* Отступ сверху - можно менять */
+  margin-bottom: 1rem; /* Отступ снизу - можно менять */
+}
+
+.regisGoogle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px; /* Скругление углов кнопки - можно менять */
+  background-color: #fff; /* Цвет фона кнопки - можно менять */
+  height: 2.063rem; /* Высота кнопки Google - можно менять */
+  color: #3c4043; /* Цвет текста кнопки - можно менять */
+  cursor: pointer;
+  width: 85%; /* Ширина кнопки (отступы от краев) - можно менять */
+  margin: 0 auto;
+}
+
+.googlevecIcon {
+  height: 24px; /* Размер иконки Google - можно менять */
+  margin-right: 8px; /* Отступ между иконкой и текстом - можно менять */
+}
+
+.google {
+  font-weight: bold;
+}
+
+/* ================ АДАПТИВНАЯ ВЕРСТКА ================ */
+@media (max-width: 1024px) {
+  .registration {
+    width: 100%;
+    height: auto;
     position: relative;
-    top: 27px;
-    left: 15px;
-    line-height: 12px;
-    display: flex;
-    width: 7.788rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .registrationContainer {
+    width: 90%;
+  }
+
+  .tabsBtn {
+    flex-direction: column;
+  }
+
+  .tabsBtnRight,
+  .tabsBtnLeft {
+    width: 100%;
+    height: 3rem; /* Высота табов на мобильных - можно менять */
+  }
 }

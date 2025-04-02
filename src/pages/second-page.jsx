@@ -18,7 +18,6 @@ const SecondPage = () => {
       <SecondPageBegin />
 
       {/* <SecondPageSteps /> */}
-      <Footer />
       
       <div className={styles.bottomSteps}>
         <div className={styles.stepsSix}>
@@ -162,6 +161,8 @@ const SecondPage = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
 
     </div>
   );

@@ -1,21 +1,54 @@
+/* Основной контейнер */
 .mainJoin {
+  position: absolute;
   top: 155.188rem;
   left: 0;
   background: linear-gradient(180deg, #053525, #10b981);
-  width: 101.25rem;
+  width: 100%;
   height: 26.75rem;
   overflow: hidden;
   text-align: center;
   font-size: var(--pocketoptioncom-nunito-sans-bold-16-upper-size);
   font-family: var(--pocketoptioncom-montserrat-semibold-40);
 }
-.div7,
-.mainJoin {
+
+/* Обертка для фонового изображения */
+.backgroundWrapper {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+
+/* Фоновое изображение */
+.joinBeckgraundIcon {
+  position: absolute;
+  top: calc(50% - 499.4px); /* Оставляем оригинальное позиционирование по вертикали */
+  left: 50%;
+  transform: translateX(-50%); /* Центрируем изображение горизонтально */
+  width: 120rem;
+  height: 37.438rem;
+  object-fit: cover;
+  min-width: 120rem; /* Зафиксированная минимальная ширина */
+}
+
+/* Обертка для контента */
+.contentWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  right: 5%;
+}
+
+/* Заголовок */
 .div7 {
+  position: absolute;
   top: 6.188rem;
-  left: calc(50% - 279px);
+  left: 50%;
+  transform: translateX(-50%);
   font-size: var(--pocketoptioncom-montserrat-semibold-40-size);
   letter-spacing: 1px;
   line-height: 48px;
@@ -24,45 +57,64 @@
   align-items: center;
   justify-content: center;
   width: 35.375rem;
+  max-width: 90%;
   height: 3.063rem;
 }
-.joinBeckgraundIcon {
-  top: calc(50% - 499.4px);
-  left: calc(50% - 798px);
-  width: 120rem;
-  height: 37.438rem;
-  object-fit: cover;
-}
-.joinBeckgraundIcon {
+
+/* Описание */
+.tradingBrokerContainer {
   position: absolute;
-  overflow: hidden;
+  top: 11.625rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: var(--pocketoptioncom-nunito-sans-bold-17-size);
+  font-family: var(--pocketoptioncom-semantic-link);
+  display: flex;
+  align-items: center;
+  width: 62.625rem;
+  max-width: 90%;
+  height: 2.5rem;
 }
+
+.txt {
+  width: 100%;
+}
+
+.forex {
+  margin: 0;
+}
+
+/* Кнопка */
 .joinBtn {
+  position: absolute;
   top: 17.325rem;
-  left: calc(50% - 189.2px);
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: var(--br-xl);
   background-color: var(--color-darkslategray-300);
   width: 23.65rem;
+  max-width: 90%;
   height: 3.188rem;
   color: var(--color-mediumseagreen-300);
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 255, 153, 0.5);
-  transition: all 0.3s ease; /* Плавный переход */
+  transition: all 0.3s ease;
 }
+
 .joinBtn:hover {
-  /* background-color: #80d0ff; Меняем фон на более светлый */
-  box-shadow: 0 0 20px rgba(0, 255, 179, 0.8), 0 0 30px rgba(0, 255, 179, 0.6); /* Усиливаем свечение */
+  box-shadow: 0 0 20px rgba(0, 255, 179, 0.8), 0 0 30px rgba(0, 255, 179, 0.6);
 }
+
 .joinBtn:hover .div6 {
   color: #00FFAA;
 }
-.div6,
-.joinBtn {
-  position: absolute;
-}
+
+/* Текст кнопки */
 .div6 {
+  position: absolute;
   top: 0.988rem;
-  left: calc(50% - 177px);
+  left: 50%;
+  transform: translateX(-50%);
   letter-spacing: 0.7px;
   text-transform: uppercase;
   font-weight: 600;
@@ -70,23 +122,63 @@
   align-items: center;
   justify-content: center;
   width: 22.125rem;
+  max-width: 95%;
   height: 1.188rem;
-  transition: color 0.3s ease; /* Плавное изменение цвета */
+  transition: color 0.3s ease;
 }
-.tradingBrokerContainer {
-  position: absolute;
-  top: 11.625rem;
-  left: calc(50% - 482px);
-  font-size: var(--pocketoptioncom-nunito-sans-bold-17-size);
-  font-family: var(--pocketoptioncom-semantic-link);
-  display: flex;
-  align-items: center;
-  width: 62.625rem;
-  height: 2.5rem;
+
+/* Медиа-запросы для разных размеров экранов */
+@media screen and (max-width: 1024px) {
+  .div7 {
+    font-size: 2.2rem;
+    line-height: 2.6rem;
+  }
+  
+  .tradingBrokerContainer {
+    font-size: 1rem;
+    height: auto;
+    min-height: 2.5rem;
+  }
 }
-.txt {
-  width: 100%;
+
+@media screen and (max-width: 768px) {
+  .div7 {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    top: 5rem;
+  }
+  
+  .tradingBrokerContainer {
+    top: 10rem;
+    height: auto;
+    min-height: 4rem;
+  }
+  
+  .joinBtn {
+    top: 16rem;
+  }
 }
-.forex {
-  margin: 0;
+
+@media screen and (max-width: 480px) {
+  .div7 {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    top: 4rem;
+  }
+  
+  .tradingBrokerContainer {
+    font-size: 0.9rem;
+    top: 8.5rem;
+    height: auto;
+    min-height: 5rem;
+  }
+  
+  .joinBtn {
+    top: 15rem;
+    height: 3rem;
+  }
+  
+  .div6 {
+    font-size: 0.8rem;
+  }
 }

@@ -1,18 +1,33 @@
 .mainContainerClients {
-  position: absolute;
-  top: 6.688rem;
-  left: 6.375rem;
-  width: 73.313rem;
-  height: 19.25rem;
+  position: relative;
+  top: 4.688rem;
+  left: 14.5rem;
+  /* width: 73.313rem; */
+  height: 22.25rem;
+  display: flex;
+  justify-content: center;
 }
+.clientsRightContainer {
+  /* display: flex;
+  justify-content: center;
+  align-items: start; */
+  position: relative;
+  bottom: 2rem;
+  left: 1rem;
+}
+
 .clientsRight {
-  position: absolute;
-  height: 100%;
-  width: calc(100% - 461px);
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 28.813rem;
+  /* height: 100%; */
+  /* width: calc(100% - 461px); */
+  /* top: 0.5rem; */
+  /* right: 0; */
+  /* bottom: 5.6rem; */
+  /* left: 18rem; */
+  /* overflow: hidden; */
+  display: flex;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: start; */
 }
 .typingEffect {
   position: relative;
@@ -29,39 +44,42 @@
   font-size: 19px
 }
 .rightQuotesIcon {
-  position: absolute;
-  top: calc(50% - 142.2px);
-  left: 452px;
-  width: 3.875rem;
+  position: relative;
+  right: 50rem;
+  top: 0.5rem;
+  /* left: 452px; */
+  /* width: 3.875rem; */
   height: 3.875rem;
   overflow: hidden;
 }
-.clientsLeft,
+
 .div22 {
-  position: absolute;
-  left: 0;
-}
-.div22 {
+  position: relative;
   top: -0.062rem;
   letter-spacing: 1px;
   line-height: 48px;
   font-weight: 600;
+  /* right: 11.5rem; */
   display: flex;
   align-items: center;
-  width: 24.044rem;
+  justify-content: center;
+  /* width: 24.044rem; */
   height: 9.063rem;
 }
 .clientsLeft {
-  width: calc(100% - 765px);
-  top: 5.063rem;
-  right: 47.813rem;
+  position: relative;
+  /* width: calc(100% - 765px); */
+  display: flex;
+  justify-content: center;
+  top: 4.063rem;
+  right: 84rem;
   height: 9rem;
   font-size: var(--pocketoptioncom-montserrat-semibold-40-size);
   font-family: var(--pocketoptioncom-montserrat-semibold-40);
 }
-.txt {
+/* .txt {
   width: 100%;
-}
+} */
 .forex {
   margin: 0;
 }

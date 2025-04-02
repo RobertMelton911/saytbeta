@@ -172,3 +172,214 @@
   left: 0;
   width: 3.188rem;
 }
+
+/* Адаптивные стили */
+@media screen and (min-width: 1440px) {
+  .mainSlaid {
+    right: calc(50% - 720px); /* Центрирование на больших экранах */
+    left: calc(50% - 720px);
+    width: 1440px;
+    margin: 0 auto;
+  }
+  
+  .slaidBeckgraundIcon {
+    position: absolute;
+    left: 0;
+    width: 1440px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .mainSlaid {
+    right: calc(50% - 960px); /* Центрирование на очень больших экранах */
+    left: calc(50% - 960px);
+    width: 1920px;
+    margin: 0 auto;
+  }
+  
+  .slaidBeckgraundIcon {
+    position: absolute;
+    left: 0;
+    width: 1920px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .mainSlaid {
+    right: 0;
+  }
+  
+  .div10 {
+    width: 40rem;
+  }
+  
+  .tradeFinancial {
+    width: calc(100% - 500px);
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .div10 {
+    width: 35rem;
+    line-height: 50px;
+  }
+  
+  .tradeFinancial {
+    width: calc(100% - 400px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .mainSlaid {
+    right: 0;
+    height: 35rem;
+  }
+  
+  .slaidBeckgraundIcon {
+    width: 100%;
+    height: 35rem;
+  }
+  
+  .slaidTrade {
+    left: 3rem;
+    width: calc(100% - 6rem);
+  }
+  
+  .div10 {
+    width: 30rem;
+    line-height: 45px;
+  }
+  
+  .tradeFinancial {
+    width: calc(100% - 300px);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .mainSlaid {
+    height: 33rem;
+  }
+  
+  .slaidBeckgraundIcon {
+    height: 33rem;
+  }
+  
+  .slaidTrade {
+    left: 2rem;
+    width: calc(100% - 4rem);
+  }
+  
+  .div10 {
+    width: 24rem;
+    line-height: 40px;
+    font-size: calc(var(--font-size-31xl) - 0.5rem);
+  }
+  
+  .tradeFinancial {
+    width: calc(100% - 200px);
+  }
+  
+  .tradeRegistering {
+    width: 17rem;
+  }
+  
+  .b20 {
+    left: 5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .mainSlaid {
+    height: 30rem;
+  }
+  
+  .slaidBeckgraundIcon {
+    height: 30rem;
+  }
+  
+  .slaidTrade {
+    left: 1.5rem;
+    width: calc(100% - 3rem);
+    top: 6rem;
+  }
+  
+  .div10 {
+    width: 20rem;
+    line-height: 35px;
+    font-size: calc(var(--font-size-31xl) - 1rem);
+  }
+  
+  .tradeFinancial {
+    width: calc(100% - 100px);
+  }
+  
+  .tradeRegistering {
+    width: 14rem;
+  }
+  
+  .b20 {
+    left: 3.5rem;
+  }
+  
+  .tradingBroker2 {
+    width: 8rem;
+  }
+  
+  .tradeStart {
+    width: auto;
+    right: 1rem;
+  }
+  
+  .startClick {
+    width: 12rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .mainSlaid {
+    height: 28rem;
+  }
+  
+  .slaidBeckgraundIcon {
+    height: 28rem;
+  }
+  
+  .slaidTrade {
+    left: 1rem;
+    width: calc(100% - 2rem);
+    top: 5rem;
+  }
+  
+  .div10 {
+    width: 18rem;
+    line-height: 30px;
+    font-size: calc(var(--font-size-31xl) - 1.5rem);
+  }
+  
+  .tradeFinancial {
+    width: calc(100% - 80px);
+  }
+  
+  .tradeRegistering {
+    width: 12rem;
+  }
+  
+  .b20 {
+    left: 2.5rem;
+  }
+  
+  .tradingBroker2 {
+    width: 7rem;
+    font-size: 0.9rem;
+  }
+  
+  .startClick {
+    width: 10rem;
+    font-size: 0.9rem;
+  }
+  
+  .startEnter {
+    width: 2.5rem;
+    font-size: 0.9rem;
+  }
+}

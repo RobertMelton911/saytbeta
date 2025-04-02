@@ -9,27 +9,12 @@ const Footer = () => {
   return (
       <div className={styles.footer}>
         <img className={styles.footerLogoIcon} onClick={handleGoHome} alt="" src="/footerlogo.svg" />
-        <div className={styles.footerLink}>
-          <div className={styles.div}>Регуляторная политика</div>
+        
+        <div className={styles.footerWarning}>
+          <img className={styles.vectorIcon} alt="" src="/vector1.svg" />
+          <b className={styles.b}>Предупреждение о рисках:</b>
         </div>
-        <div className={styles.footerLink1}>
-          <div className={styles.div1}>Политика платежей</div>
-        </div>
-        <div className={styles.footerLink2}>
-          <div className={styles.div2}>Политика конфиденциальности</div>
-        </div>
-        <div className={styles.footerLink3}>
-          <div className={styles.amlKyc}>Политика AML и KYC</div>
-        </div>
-        <div className={styles.footerLink4}>
-          <div className={styles.div3}>Условия предоставления сервиса</div>
-        </div>
-        <div className={styles.footerLink5}>
-          <div className={styles.div4}>Контакты</div>
-        </div>
-        <div className={styles.footerRisks}>
-          <div className={styles.div5}>Предупреждение о рисках</div>
-        </div>
+        
         <div className={styles.forexContainer}>
           <div className={styles.txt}>
             <p className={styles.forex}>
@@ -51,9 +36,35 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className={styles.footerWarning}>
-          <img className={styles.vectorIcon} alt="" src="/vector1.svg" />
-          <b className={styles.b}>Предупреждение о рисках:</b>
+        
+        <div className={styles.footerRisks}>
+          <div className={styles.div5}>Предупреждение о рисках</div>
+        </div>
+        
+        <div className={styles["footer-links-container"]}>
+          <div className={styles.footerLink5}>
+            <div className={styles.div4}>Контакты</div>
+          </div>
+          
+          <div className={styles.footerLink4}>
+            <div className={styles.div3}>Условия предоставления сервиса</div>
+          </div>
+          
+          <div className={styles.footerLink3}>
+            <div className={styles.amlKyc}>Политика AML и KYC</div>
+          </div>
+          
+          <div className={styles.footerLink2}>
+            <div className={styles.div2}>Политика конфиденциальности</div>
+          </div>
+          
+          <div className={styles.footerLink1}>
+            <div className={styles.div1}>Политика платежей</div>
+          </div>
+          
+          <div className={styles.footerLink}>
+            <div className={styles.div}>Регуляторная политика</div>
+          </div>
         </div>
       </div>
   );

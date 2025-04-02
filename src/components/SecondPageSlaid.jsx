@@ -8,11 +8,11 @@ const SecondPageSlaid = () => {
   const handleGoHome = () => navigate("/");
   return (
   <div className={styles.mainSlaid}> 
-    <img
+    {/* <img
       className={styles.slaidBeckgraundIcon}
       alt=""
       src="/slaidbeckgraund@2x.png"
-    />
+    /> */}
     <div className={styles.slaidTrade}>
       <div className={styles.tradeStart}>
         <div className={styles.startClick}>

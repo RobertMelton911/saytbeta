@@ -1,21 +1,24 @@
-.firstPage,
-.registration {
+.firstPage{
   height: 196.25rem;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .firstPage {
-  background-color: transparent;
+  /* background-color: transparent; */
   width: 100%;
   position: relative;
   text-align: left;
   font-size: var(--pocketoptioncom-nunito-sans-bold-16-upper-size);
   color: var(--color-mintcream);
   font-family: var(--pocketoptioncom-semantic-link);
+  background: linear-gradient(111.19deg, #073c2b, rgba(4, 31, 22, 0.2));
+  background-color: #071a14;
 }
 .main {
-  width: 101.25rem; 
-  /* height: 171.688rem; */
+  width: 100%; 
   font-family: var(--pocketoptioncom-montserrat-semibold-40);
+  overflow: hidden;
+  /* display: flex; */
+  /* justify-content: center; */
 }
 .main,
 .mainSlider {
