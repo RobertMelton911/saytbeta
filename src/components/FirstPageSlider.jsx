@@ -5,10 +5,13 @@ import { useNavigate } from "react-router-dom";
 const FirstPageSlider = () => {
   const navigate = useNavigate();
   const handleDemo = () => navigate("/grafpage");
+  
 
   return (
     <div className={styles.mainSlider}>
-      {/* <img className={styles.fonovoefoto1Icon} alt="" src="/fonovoefoto-1@2x.png" /> */}
+      <div className={styles.sliderBeckgraund}>
+        <img className={styles.sliderBeckgraundIcon} alt="" src="/fonovoefoto-1@2x.png"/>
+      </div>
       <div className={styles.sliderContainer}>
         <div className={styles.div11}>
           <div className={styles.txt}>
@@ -24,7 +27,7 @@ const FirstPageSlider = () => {
           <b className={styles.b28}>Самый удобный интерфейс</b>
           <div className={styles.buttonGroup}>
             <div className={styles.btnLeft}>
-              <b className={styles.b27}>РЕГИСТРАЦИЯ</b>
+              <b className={styles.b27} onClick={() => navigate("/login")}>РЕГИСТРАЦИЯ</b>
             </div>
             <div className={styles.btnRight}>
               <b className={styles.b26}>ВОЙТИ</b>

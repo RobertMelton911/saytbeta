@@ -1,0 +1,88 @@
+/* Обновление для login-page.module.css */
+.loginPage {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background-color: #1e242d;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    line-height: normal;
+    letter-spacing: normal;
+    padding: 2rem;
+  }
+  
+  .containerWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+  }
+  
+  /* Добавления для page-container.module.css */
+  .formError {
+    color: #e74c3c;
+    text-align: center;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  
+  /* Увеличиваем высоту полей ввода */
+  .email, .input {
+    height: 1.6rem !important;
+    line-height: 1.6rem !important;
+  }
+  
+  /* Стили для строки с паролем и кнопкой видимости */
+  .stringPassword {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Стили для кнопки показа/скрытия пароля */
+  .passwordToggle {
+    background: transparent;
+    border: none;
+    color: #DDEEE8;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0 0.5rem;
+    margin-left: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .passwordToggle:hover {
+    opacity: 0.8;
+  }
+  
+  /* Обеспечиваем достаточное пространство для полей ввода */
+  .stringEmail, .stringPassword {
+    height: 3.8rem !important;
+  }
+  
+  /* Сохраняем адаптивные стили, но с центрированием */
+  @media screen and (max-width: 975px) {
+    .containerWrapper {
+      width: 100%;
+      padding: 0 2rem;
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .containerWrapper {
+      width: 100%;
+      padding: 0 1rem;
+    }
+  }
+  
+  @media screen and (max-width: 450px) {
+    .containerWrapper {
+      padding: 0 0.5rem;
+    }
+  }

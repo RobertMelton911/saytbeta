@@ -10,6 +10,7 @@ import SecondPage from "./pages/second-page";
 import ThirdPage from "./pages/third-page";
 import ProfilePage from "./pages/profile-page";
 import GrafPage from "./pages/graf-page";
+import LoginPage from "./pages/login-page";
 
 function App() {
   const action = useNavigationType();
@@ -27,6 +28,10 @@ function App() {
     let metaDescription = "";
 
     switch (pathname) {
+      case "/login":
+        title = "Вход | Мой Брокер";
+        metaDescription = "Страница авторизации пользователя на сайте Мой Брокер.";
+        break;
       case "/":
         title = "Главная страница | Мой Брокер";
         metaDescription = "Добро пожаловать на главную страницу сайта брокера. Узнайте больше о нас.";
@@ -66,6 +71,7 @@ function App() {
       <Route path="/thirdpage" element={<ThirdPage />} />
       <Route path="/grafpage" element={<GrafPage />} />
       <Route path="/profilepage" element={<ProfilePage />} />
+      <Route path="/login" element={<LoginPage />} />
     </Routes>
   );
 }

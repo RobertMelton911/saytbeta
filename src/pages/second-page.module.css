@@ -1025,8 +1025,8 @@
 .secondPage {
   width: 100%;
   position: relative;
-  background: linear-gradient(111.19deg, #073c2b, rgba(4, 31, 22, 0.2));
-  background-color: #071a14;
+  /* background: linear-gradient(111.19deg, #073c2b, rgba(4, 31, 22, 0.2)); */
+  background-color: #004d40;
   height: 235.125rem;
   overflow: hidden;
   text-align: left;

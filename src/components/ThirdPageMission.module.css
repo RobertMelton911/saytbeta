@@ -1,7 +1,7 @@
 .mainmission {
   position: relative;
-  background: linear-gradient(111.19deg, #073c2b, rgba(4, 31, 22, 0.2));
-  background-color: #071a14;
+  /* background: linear-gradient(111.19deg, #073c2b, rgba(4, 31, 22, 0.2)); */
+  background-color: #004D40;
   width: calc(100% - 283px); /* Учитываем ширину Registration */
   height: 46.563rem;
   display: flex;
@@ -16,24 +16,37 @@
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 /* Удаляем класс .image2Icon, так как будем использовать div с background-image */
 
-.gradient,
+/* .gradient,
 .gradient1 {
   position: absolute;
   width: 100%;
   height: 100%;
+} */
+
+/* .gradient {
+  background: linear-gradient(86.92deg, rgba(5, 53, 37, 0.5), rgba(6, 34, 9, 0.1));
+} */
+
+.gradient1 {
+  position: relative;
+  width: 101.8rem;
+  height: 100rem;
+  background: linear-gradient( 90.67deg, #004D40, rgba(6, 46, 32, 0.82) 15.65%, rgba(7, 50, 35, 0.65) 70.08%, #004d40);
 }
 
-.gradient {
+/* .gradient {
   background: linear-gradient(86.92deg, rgba(5, 53, 37, 0.5), rgba(6, 34, 9, 0.1));
 }
 
 .gradient1 {
   background: linear-gradient(111.19deg, #073c2b, rgba(4, 31, 22, 0.2));
-}
+} */
 
 /* Добавляем для div с фоновым изображением */
 .backgroundContainer {

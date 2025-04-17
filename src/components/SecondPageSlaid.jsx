@@ -8,11 +8,9 @@ const SecondPageSlaid = () => {
   const handleGoHome = () => navigate("/");
   return (
   <div className={styles.mainSlaid}> 
-    {/* <img
-      className={styles.slaidBeckgraundIcon}
-      alt=""
-      src="/slaidbeckgraund@2x.png"
-    /> */}
+    {/* <img className={styles.slaidBeckgraundIcon} alt="" src="/slaidbeckgraund@2x.png" /> */}
+    <div className={styles.backgroundContainer}></div>
+    <div className={styles.gradient1} />
     <div className={styles.slaidTrade}>
       <div className={styles.tradeStart}>
         <div className={styles.startClick}>

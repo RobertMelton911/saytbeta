@@ -1,22 +1,35 @@
 .mainSlider {
   width: 100%;
-  height: 59.5rem;
+  height: 59rem;
   text-align: center;
   font-size: var(--font-size-sm);
   font-family: var(--pocketoptioncom-semantic-link);
-  background: linear-gradient(111.19deg, #073c2b, rgba(4, 31, 22, 0.2));
   background-color: #071a14;
   display: flex;
   justify-content: center;
   position: relative;
-  right: 11.5rem;
-  top: 1rem;
+  right: 11rem;
 }
 
-.fonovoefoto1Icon {
-  height: 100%;
+.sliderBeckgraund{
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  object-fit: cover;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.sliderBeckgraundIcon {
+  position: absolute;
+  top: 0;
+  left: 51%;
+  transform: translateX(-50%);
+  height: 100%;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .sliderContainer {
@@ -105,6 +118,7 @@
 }
 
 .div11 {
+  position: relative;
   width: 46.875rem;
   font-size: var(--font-size-31xl);
   letter-spacing: 0.12em;
