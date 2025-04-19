@@ -9,7 +9,7 @@ const API_ENDPOINTS = {
     register: "", // здесь будет URL для регистрации
 };
 
-<<<<<<< HEAD
+
 const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
