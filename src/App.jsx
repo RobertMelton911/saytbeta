@@ -29,8 +29,8 @@ function App() {
 
     switch (pathname) {
       case "/login":
-        title = "Вход | Мой Брокер";
-        metaDescription = "Страница авторизации пользователя на сайте Мой Брокер.";
+        title = "Авторизация | Мой Брокер";
+        metaDescription = "Страница входа и регистрации пользователя на сайте Мой Брокер.";
         break;
       case "/":
         title = "Главная страница | Мой Брокер";
@@ -75,4 +75,5 @@ function App() {
     </Routes>
   );
 }
+
 export default App;

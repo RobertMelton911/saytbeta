@@ -5,10 +5,9 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 // URL для будущей интеграции с API
 const API_ENDPOINTS = {
-    login: "", // здесь будет URL для входа
-    register: "", // здесь будет URL для регистрации
+  login: "", // здесь будет URL для входа
+  register: "", // здесь будет URL для регистрации
 };
-
 
 const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   const navigate = useNavigate();
@@ -30,6 +29,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoginMode, setIsLoginMode] = useState(initialMode === "login");
+  const [agreementError, setAgreementError] = useState("");
 
   // Синхронизация режима при изменении URL параметра
   useEffect(() => {
@@ -52,6 +52,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   useEffect(() => {
     if (formError) setFormError("");
     if (formSuccess) setFormSuccess("");
+    if (agreementError) setAgreementError("");
   }, [formData, isAgreed, isLoginMode]);
 
   // Обработчики изменения полей
@@ -61,6 +62,41 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
       ...formData,
       [name]: value
     });
+  };
+
+  // Обработчик изменения состояния чекбокса согласия
+  const handleAgreementChange = (e) => {
+    setIsAgreed(e.target.checked);
+    if (e.target.checked) {
+      setAgreementError("");
+    }
+  };
+
+  // Сохранение данных пользователя в localStorage
+  const saveUserData = (userData) => {
+    // Получаем текущий список пользователей или создаем пустой массив
+    const users = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+    
+    // Добавляем нового пользователя (без пароля в открытом виде)
+    const newUser = {
+      email: userData.email,
+      id: Date.now(), // временный ID для фронтенда
+      createdAt: new Date().toISOString()
+    };
+    
+    // Добавляем пользователя в список
+    users.push(newUser);
+    
+    // Сохраняем обновленный список
+    localStorage.setItem("registeredUsers", JSON.stringify(users));
+    
+    return newUser;
+  };
+
+  // Проверка существования пользователя
+  const userExists = (email) => {
+    const users = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+    return users.some(user => user.email === email);
   };
 
   // Обработчик отправки формы
@@ -88,28 +124,60 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
       return;
     }
     
+    // Более заметная проверка согласия с условиями
     if (!isLoginMode && !isAgreed) {
-      setFormError("Необходимо принять условия соглашения");
+      setAgreementError("Необходимо принять условия соглашения для продолжения регистрации");
+      // Фокусировка на чекбоксе для привлечения внимания пользователя
+      document.getElementById("agreementCheckbox")?.focus();
       return;
     }
     
     setFormError("");
+    setAgreementError("");
     setIsLoading(true);
     
     try {
-      // Имитация запроса на сервер
+      // В реальном приложении здесь будет запрос к API
+      // const response = await fetch(isLoginMode ? API_ENDPOINTS.login : API_ENDPOINTS.register, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     email: formData.email,
+      //     password: formData.password
+      //   })
+      // });
+      
+      // Имитация запроса на сервер для работы фронтенда без бекенда
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      console.log(`${isLoginMode ? "Вход" : "Регистрация"}`, formData);
-      setFormSuccess(isLoginMode 
-        ? "Вход выполнен успешно!" 
-        : "Регистрация успешно завершена!");
-      
-      // Вызов колбэка успешного входа
-      onLoginSuccess();
-      
-      // Сброс формы после успешной регистрации
-      if (!isLoginMode) {
+      if (isLoginMode) {
+        // Проверка существования пользователя при входе
+        if (!userExists(formData.email)) {
+          setFormError("Пользователь с таким email не найден");
+          return;
+        }
+        
+        console.log("Вход пользователя:", formData.email);
+        setFormSuccess("Вход выполнен успешно!");
+        
+        // Вызов колбэка успешного входа
+        onLoginSuccess({ email: formData.email });
+      } else {
+        // Проверка на существующего пользователя при регистрации
+        if (userExists(formData.email)) {
+          setFormError("Пользователь с таким email уже существует");
+          return;
+        }
+        
+        // Сохраняем данные нового пользователя
+        const userData = saveUserData({ email: formData.email });
+        
+        console.log("Регистрация нового пользователя:", userData);
+        setFormSuccess("Регистрация успешно завершена!");
+        
+        // Сброс формы после успешной регистрации
         setFormData({
           email: "",
           password: "",
@@ -145,6 +213,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
     });
     setFormError("");
     setFormSuccess("");
+    setAgreementError("");
     setIsAgreed(false);
   };
 
@@ -262,16 +331,29 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
                 className={styles.agreementCheckbox} 
                 type="checkbox"
                 checked={isAgreed}
-                onChange={(e) => setIsAgreed(e.target.checked)}
+                onChange={handleAgreementChange}
                 id="agreementCheckbox"
               />
               <div className={styles.loginTreaty}>
                 <label htmlFor="agreementCheckbox" className={styles.div2}>
                   Я прочитал и принял соглашение:
                 </label>
-                <div className={styles.div3}>Договор о предоставлении услуг</div>
+                <div 
+                  className={styles.div3}
+                  onClick={() => console.log("Открытие договора о предоставлении услуг")}
+                  role="link"
+                  tabIndex={0}
+                >
+                  Договор о предоставлении услуг
+                </div>
               </div>
             </div>
+            {/* Отдельное сообщение об ошибке для соглашения */}
+            {agreementError && (
+              <div className={`${styles.formError} ${styles.agreementError}`}>
+                {agreementError}
+              </div>
+            )}
           </div>
         )}
         
@@ -295,7 +377,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
         <button 
           className={styles.enterBtn} 
           type="submit"
-          disabled={isLoading}
+          disabled={isLoading || (!isLoginMode && !isAgreed)}
         >
           <b className={styles.b}>
             {isLoading 
