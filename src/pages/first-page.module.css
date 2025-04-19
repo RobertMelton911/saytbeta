@@ -14,9 +14,9 @@
   background-color: #071a14;
 }
 .main {
-  width: 100%;
+  width: 100%; 
   font-family: var(--pocketoptioncom-montserrat-semibold-40);
-  overflow: hidden; 
+  overflow: hidden;
   /* display: flex; */
   /* justify-content: center; */
 }

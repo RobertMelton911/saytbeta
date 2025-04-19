@@ -31,19 +31,13 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoginMode, setIsLoginMode] = useState(initialMode === "login");
   const [agreementError, setAgreementError] = useState("");
-=======
-const PageContainer = ({
-                           className = "", onLoginSuccess = () => {
-    }
-                       }) => {
-    const navigate = useNavigate();
-    const [searchParams] = useSearchParams();
->>>>>>> d2cf818d4d76cd349d661061811805176abefb5c
 
-    // Определяем начальный режим из URL параметра
-    const initialMode = searchParams.get("mode") === "register" ? "register" : "login";
+  // Синхронизация режима при изменении URL параметра
+  useEffect(() => {
+    const currentMode = searchParams.get("mode") === "register" ? "register" : "login";
+    setIsLoginMode(currentMode === "login");
+  }, [searchParams]);
 
-<<<<<<< HEAD
   // Валидация email
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -59,7 +53,6 @@ const PageContainer = ({
   useEffect(() => {
     if (formError) setFormError("");
     if (formSuccess) setFormSuccess("");
-    if (agreementError) setAgreementError("");
   }, [formData, isAgreed, isLoginMode]);
 
   // Обработчики изменения полей
@@ -68,23 +61,9 @@ const PageContainer = ({
     setFormData({
       ...formData,
       [name]: value
-=======
-    // Состояния формы
-    const [formData, setFormData] = useState({
-        email: "",
-        password: "",
-        confirmPassword: ""
->>>>>>> d2cf818d4d76cd349d661061811805176abefb5c
     });
-    const [isAgreed, setIsAgreed] = useState(false);
-    const [formError, setFormError] = useState("");
-    const [formSuccess, setFormSuccess] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isLoginMode, setIsLoginMode] = useState(initialMode === "login");
+  };
 
-<<<<<<< HEAD
   // Обработчик изменения состояния чекбокса согласия
   const handleAgreementChange = (e) => {
     setIsAgreed(e.target.checked);
@@ -148,16 +127,12 @@ const PageContainer = ({
       return;
     }
     
-    // Более заметная проверка согласия с условиями
     if (!isLoginMode && !isAgreed) {
-      setAgreementError("Необходимо принять условия соглашения для продолжения регистрации");
-      // Фокусировка на чекбоксе для привлечения внимания пользователя
-      document.getElementById("agreementCheckbox")?.focus();
+      setFormError("Необходимо принять условия соглашения");
       return;
     }
     
     setFormError("");
-    setAgreementError("");
     setIsLoading(true);
     
     try {
@@ -236,7 +211,6 @@ const PageContainer = ({
     });
     setFormError("");
     setFormSuccess("");
-    setAgreementError("");
     setIsAgreed(false);
   };
 
@@ -354,28 +328,16 @@ const PageContainer = ({
                 className={styles.agreementCheckbox} 
                 type="checkbox"
                 checked={isAgreed}
-                onChange={handleAgreementChange}
+                onChange={(e) => setIsAgreed(e.target.checked)}
                 id="agreementCheckbox"
               />
               <div className={styles.loginTreaty}>
                 <label htmlFor="agreementCheckbox" className={styles.div2}>
                   Я прочитал и принял соглашение:
                 </label>
-                <div 
-                  className={styles.div3}
-                  onClick={() => console.log("Открытие договора о предоставлении услуг")}
-                  role="link"
-                  tabIndex={0}>
-                  Договор о предоставлении услуг
-                </div>
+                <div className={styles.div3}>Договор о предоставлении услуг</div>
               </div>
             </div>
-            {/* Отдельное сообщение об ошибке для соглашения */}
-            {agreementError && (
-              <div className={`${styles.formError} ${styles.agreementError}`}>
-                {agreementError}
-              </div>
-            )}
           </div>
         )}
         
@@ -399,7 +361,7 @@ const PageContainer = ({
         <button 
           className={styles.enterBtn} 
           type="submit"
-          disabled={isLoading || (!isLoginMode && !isAgreed)}
+          disabled={isLoading}
         >
           <b className={styles.b}>
             {isLoading 
@@ -428,15 +390,16 @@ const PageContainer = ({
         <button 
           className={styles.googleBtn} 
           type="button"
-          onClick={() => console.log("Google авторизация")}>
-          <div className={styles.google}>
-            {isLoginMode ? "Вход через аккаунт Google" : "Регистрация через Google"}
-          </div>
+          onClick={() => console.log("Google авторизация")}
+        >
           <img
             className={styles.googleBtnImgIcon}
             alt="Google"
             src="/googlebtnimg.svg"
           />
+          <div className={styles.google}>
+            {isLoginMode ? "Вход через аккаунт Google" : "Регистрация через Google"}
+          </div>
         </button>
       </div>
     </form>

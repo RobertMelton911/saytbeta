@@ -6,8 +6,6 @@ const SecondPageSlaid = () => {
   const navigate = useNavigate(); 
   const handleDemo = () => navigate("/grafpage");
   const handleGoHome = () => navigate("/");
-  const handleRegister = () => navigate("/login?mode=register");
-  const handleLogin = () => navigate("/login?mode=login");
   return (
   <div className={styles.mainSlaid}> 
     {/* <img className={styles.slaidBeckgraundIcon} alt="" src="/slaidbeckgraund@2x.png" /> */}
@@ -19,11 +17,11 @@ const SecondPageSlaid = () => {
           <div className={styles.div7} onClick={handleDemo}>Начать торговлю в один клик</div>
         </div>
         <div className={styles.div8}>или</div>
-        <div className={styles.startEnter} onClick={handleLogin}>
+        <div className={styles.startEnter}>
           <div className={styles.div7}>Войти</div>
         </div>
       </div>
-      <div className={styles.tradeRegistering} onClick={handleRegister}>
+      <div className={styles.tradeRegistering}>
         <b className={styles.b20}>РЕГИСТРАЦИЯ</b>
       </div>
       <div className={styles.tradingBroker2}>с Trading Broker</div>

@@ -19,9 +19,7 @@
 .choiceBottom {
   width: 100%;
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  /* flex-direction: column; */
+  flex-direction: column;
   align-items: center;
   margin-top: 2rem;
   color: var(--pocketoptioncom-white);
