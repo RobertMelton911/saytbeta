@@ -4,7 +4,7 @@
   text-align: center;
   font-size: var(--font-size-sm);
   font-family: var(--pocketoptioncom-semantic-link);
-  background-color: #071a14;
+  background-color: #004d40;
   display: flex;
   justify-content: center;
   position: relative;
@@ -30,6 +30,13 @@
   object-fit: contain;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+}
+.gradient1 {
+  position: relative;
+  left: 1rem;
+  width: 107rem;
+  height: 100rem;
+  background: linear-gradient( 90.67deg, #004D40, rgba(6, 46, 32, 0.82) 15.65%, rgba(7, 50, 35, 0.65) 70.08%, #004d40);
 }
 
 .sliderContainer {

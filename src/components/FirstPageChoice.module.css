@@ -19,8 +19,10 @@
 .choiceBottom {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  justify-content: center;
   align-items: center;
+  gap: 1rem;
   margin-top: 2rem;
   color: var(--pocketoptioncom-white);
   text-align: center;
@@ -49,7 +51,7 @@
   line-height: 20px;
   font-family: var(--pocketoptioncom-semantic-link);
   color: var(--color-mediumseagreen-200);
-  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .choiceList {

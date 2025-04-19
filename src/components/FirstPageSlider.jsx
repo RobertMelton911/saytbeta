@@ -14,6 +14,7 @@ const FirstPageSlider = () => {
     <div className={styles.mainSlider}>
       <div className={styles.sliderBeckgraund}>
         <img className={styles.sliderBeckgraundIcon} alt="" src="/fonovoefoto-1@2x.png"/>
+        <div className={styles.gradient1} />
       </div>
       <div className={styles.sliderContainer}>
         <div className={styles.div11}>
