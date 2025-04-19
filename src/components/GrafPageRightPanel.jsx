@@ -157,7 +157,6 @@ const GrafPageRightPanel = () => {
           {govno.map((item, index) => (
               <Bet initialDirection={item.direction} initialResult={item.result} initialPrice={item.price} key={index}/>
           ))}
-
         </div>
       </div>
 
