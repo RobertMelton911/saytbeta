@@ -6,9 +6,6 @@ const FirstPageSlider = () => {
   const navigate = useNavigate();
   const handleDemo = () => navigate("/grafpage");
   
-  // Измененные обработчики
-  const handleRegister = () => navigate("/login?mode=register");
-  const handleLogin = () => navigate("/login?mode=login");
 
   return (
     <div className={styles.mainSlider}>
@@ -29,15 +26,15 @@ const FirstPageSlider = () => {
         <div className={styles.btnContainer}>
           <b className={styles.b28}>Самый удобный интерфейс</b>
           <div className={styles.buttonGroup}>
-            <div className={styles.btnLeft} onClick={handleRegister}>
-              <b className={styles.b27}>РЕГИСТРАЦИЯ</b>
+            <div className={styles.btnLeft}>
+              <b className={styles.b27} onClick={() => navigate("/login")}>РЕГИСТРАЦИЯ</b>
             </div>
-            <div className={styles.btnRight} onClick={handleLogin}>
+            <div className={styles.btnRight}>
               <b className={styles.b26}>ВОЙТИ</b>
             </div>
           </div>
           <div className={styles.btnText}>
-            <div className={styles.div10} onClick={handleLogin}>Войти</div>
+            <div className={styles.div10}>Войти</div>
             <div className={styles.Textor}>или</div>
             <div className={styles.div8} onClick={handleDemo}>Начать торговлю в один клик</div>
           </div>
