@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, {useRef, useEffect, useState} from "react";
 import { atom, useAtom } from "jotai";
 import styles from "./GrafPageRightPanel.module.css";
 import GrafPageSelectTime from "./GrafPageSelectTime";
@@ -104,7 +104,13 @@ const GrafPageRightPanel = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [showSelectTime, showSelectAmount]);
-
+    let govno = [
+        { direction: 'up',    price: 120, result: 'win'  },
+        { direction: 'down',  price:  75, result: 'loss' },
+        { direction: 'up',    price: 200, result: 'loss' },
+        { direction: 'down',  price: 150, result: 'win'  },
+        { direction: 'down',  price:  95, result: 'win'  },
+    ];
   return (
     <>
       <div className={styles.rightPanel} ref={rightPanelRef}>
@@ -140,12 +146,100 @@ const GrafPageRightPanel = () => {
           <div className={styles.buy}>Купить</div>
           <div className={styles.sell}>Продать</div>
         </div>
+
+        <div className="govno" style={{
+          display: 'flex',
+          gap: "10px",
+          flexDirection: "column-reverse",
+          height: '100%',
+          marginBottom: '1.5vh'
+        }}>
+          {govno.map((item, index) => (
+              <Bet initialDirection={item.direction} initialResult={item.result} initialPrice={item.price} key={index}/>
+          ))}
+
+        </div>
       </div>
 
-      {showSelectTime && <GrafPageSelectTime selectTimeRef={selectTimeRef} rightPanelElement={rightPanelRef.current} />}
+      {showSelectTime && <GrafPageSelectTime selectTimeRef={selectTimeRef} rightPanelElement={rightPanelRef.current}/>}
       {showSelectAmount && <GrafPageSelectAmount selectAmountRef={selectAmountRef} rightPanelElement={rightPanelRef.current} />}
     </>
   );
 };
 
 export default GrafPageRightPanel;
+
+
+
+const Bet = ({
+                 initialResult = false,   // seed for result
+                 initialPrice = 0,        // seed for price
+                 initialDirection = ''    // seed for direction
+             }) => {
+    // internal state seeded from props
+    const [result, setResult] = useState(initialResult);
+    const [price, setPrice] = useState(initialPrice);
+    const [direction, setDirection] = useState(initialDirection);
+
+    // if the parent ever changes the initial* props and you want to sync:
+    useEffect(() => { setResult(initialResult); }, [initialResult]);
+    useEffect(() => { setPrice(initialPrice); },     [initialPrice]);
+    useEffect(() => { setDirection(initialDirection); }, [initialDirection]);
+
+    // derive styling & signs
+    const isLoss     = result === "loss";
+    const color      = isLoss ? 'red' : 'green';
+    const priceSign  = isLoss ? '-'     : '';
+    const resultSign = isLoss ? '–'     : '+';
+
+    return (
+        <div
+            className="negovno"
+            style={{
+                width: '100%',
+                height: '10vh',
+                border: '1px solid #ccc',
+                borderRadius: '10px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}
+        >
+            {/* Top row: direction + price */}
+            <div
+                style={{
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    height: '40%',
+                    gap: '2.5vw',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}
+            >
+                <p style={{ fontSize: '0.7vw', margin: '0 0.5vw' }}>
+                    {direction}
+                </p>
+                <p style={{ fontSize: '0.7vw', margin: '0 0.5vw', color }}>
+                    {priceSign}{price}
+                </p>
+            </div>
+
+            {/* Bottom row: big + or – */}
+            <div
+                style={{
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'row',
+                    height: '60%',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}
+            >
+                <p style={{ fontSize: '1.5vw', margin: 0, color }}>
+                    {result.toUpperCase()}
+                </p>
+            </div>
+        </div>
+    );
+};
