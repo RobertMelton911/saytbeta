@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./page-container.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  
+  // Определяем начальный режим из URL параметра
+  const initialMode = searchParams.get("mode") === "register" ? "register" : "login";
+  
   // Состояния формы
   const [formData, setFormData] = useState({
     email: "",
@@ -17,7 +22,13 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoginMode, setIsLoginMode] = useState(false);
+  const [isLoginMode, setIsLoginMode] = useState(initialMode === "login");
+
+  // Синхронизация режима при изменении URL параметра
+  useEffect(() => {
+    const currentMode = searchParams.get("mode") === "register" ? "register" : "login";
+    setIsLoginMode(currentMode === "login");
+  }, [searchParams]);
 
   // Валидация email
   const validateEmail = (email) => {
@@ -116,9 +127,10 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
     }
   };
 
-  // Переключение между режимами входа и регистрации
+  // Переключение между режимами входа и регистрации с обновлением URL
   const toggleMode = () => {
-    setIsLoginMode(!isLoginMode);
+    const newMode = isLoginMode ? "register" : "login";
+    navigate(`?mode=${newMode}`, { replace: true });
     setFormData({
       email: "",
       password: "",
