@@ -19,8 +19,8 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  justify-content: flex-end;
-  padding: 0 0.812rem;
+  justify-content: flex-end; /* Меняем с flex-end на center */
+  width: 100%; 
 }
 .h1 {
   margin: 0;
@@ -56,6 +56,11 @@
 .div1 {
   color: #ddeee8;
   min-width: 2.938rem;
+  transition: color 0.3s;
+}
+
+.registrationBtn:hover .div1 {
+  color: #0fd895;
 }
 .loginLabel,
 .registrationBtn {
@@ -67,6 +72,12 @@
   border-bottom: 1px solid #0fd895;
   justify-content: flex-start;
   padding: 0.125rem 0;
+  transition: border-bottom 0.3s ease;
+  cursor: pointer;
+}
+
+.registrationBtn:hover {
+  border-bottom-color: transparent;
 }
 .loginLabel {
   align-self: stretch;
@@ -78,7 +89,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: flex-start;
+  justify-content: center;
 }
 .credentials {
   align-self: stretch;
@@ -168,7 +179,16 @@
 .div2 {
   font-weight: 300;
 }
-.div2,
+.div2{
+  align-self: stretch;
+  position: relative;
+  font-size: 0.875rem;
+  font-family: "Nunito Sans";
+  color: #758b9d;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
 .div3 {
   align-self: stretch;
   position: relative;
@@ -176,20 +196,33 @@
   font-family: "Nunito Sans";
   color: #758b9d;
   text-align: center;
+  cursor: pointer;
+  transition: color 0.3s;
+  user-select: none;
+}
+
+.div3:hover {
+  color: #10b981;
 }
 .agreement,
-.agreementInner,
-.loginTreaty {
+.agreementInner {
   align-self: stretch;
   display: flex;
   align-items: flex-start;
 }
 .loginTreaty {
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
   flex: 1;
   border-bottom: 1px solid #758b9d;
   flex-direction: column;
   justify-content: flex-start;
   padding: 0 0 0.062rem;
+  transition: border-bottom 0.3s ease;
+}
+.loginTreaty:hover {
+  border-bottom-color: transparent;
 }
 .agreement,
 .agreementInner {
@@ -232,6 +265,7 @@
   align-self: stretch;
   justify-content: flex-start;
   padding: 0 3.75rem;
+  user-select: none;
 }
 .horizontalDivider {
   align-self: stretch;
@@ -276,6 +310,7 @@
   justify-content: flex-start;
   padding: 0 2.5rem;
   box-sizing: border-box;
+  user-select: none;
 }
 .googleBtnImgIcon {
   height: 1.125rem;
@@ -308,8 +343,10 @@
   height: 2.5rem;
   border-radius: 15px;
   overflow: hidden;
-  flex-direction: row;
-  gap: 3.675rem;
+  flex-direction: row-reverse; /* Меняем направление flex-контейнера */
+  justify-content: center; /* Центрируем содержимое */
+  align-items: center; /* Выравниваем элементы по вертикали */
+  gap: 0.5rem; /* Уменьшаем расстояние между текстом и иконкой */
 }
 .googleBtn:hover {
   background-color: #e6e6e6;
@@ -429,7 +466,12 @@
   transform: none;
   box-shadow: none;
 }
-
+.agreementError {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  margin-left: 2.25rem;
+  text-align: left;
+}
 /* Анимация для состояния загрузки */
 @keyframes pulse {
   0% { opacity: 1; }

@@ -29,6 +29,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoginMode, setIsLoginMode] = useState(initialMode === "login");
+  const [agreementError, setAgreementError] = useState("");
 
   // Синхронизация режима при изменении URL параметра
   useEffect(() => {
@@ -51,6 +52,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   useEffect(() => {
     if (formError) setFormError("");
     if (formSuccess) setFormSuccess("");
+    if (agreementError) setAgreementError("");
   }, [formData, isAgreed, isLoginMode]);
 
   // Обработчики изменения полей
@@ -60,6 +62,14 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
       ...formData,
       [name]: value
     });
+  };
+
+  // Обработчик изменения состояния чекбокса согласия
+  const handleAgreementChange = (e) => {
+    setIsAgreed(e.target.checked);
+    if (e.target.checked) {
+      setAgreementError("");
+    }
   };
 
   // Сохранение данных пользователя в localStorage
@@ -114,12 +124,16 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
       return;
     }
     
+    // Более заметная проверка согласия с условиями
     if (!isLoginMode && !isAgreed) {
-      setFormError("Необходимо принять условия соглашения");
+      setAgreementError("Необходимо принять условия соглашения для продолжения регистрации");
+      // Фокусировка на чекбоксе для привлечения внимания пользователя
+      document.getElementById("agreementCheckbox")?.focus();
       return;
     }
     
     setFormError("");
+    setAgreementError("");
     setIsLoading(true);
     
     try {
@@ -199,6 +213,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
     });
     setFormError("");
     setFormSuccess("");
+    setAgreementError("");
     setIsAgreed(false);
   };
 
@@ -316,16 +331,28 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
                 className={styles.agreementCheckbox} 
                 type="checkbox"
                 checked={isAgreed}
-                onChange={(e) => setIsAgreed(e.target.checked)}
+                onChange={handleAgreementChange}
                 id="agreementCheckbox"
               />
               <div className={styles.loginTreaty}>
                 <label htmlFor="agreementCheckbox" className={styles.div2}>
                   Я прочитал и принял соглашение:
                 </label>
-                <div className={styles.div3}>Договор о предоставлении услуг</div>
+                <div 
+                  className={styles.div3}
+                  onClick={() => console.log("Открытие договора о предоставлении услуг")}
+                  role="link"
+                  tabIndex={0}>
+                  Договор о предоставлении услуг
+                </div>
               </div>
             </div>
+            {/* Отдельное сообщение об ошибке для соглашения */}
+            {agreementError && (
+              <div className={`${styles.formError} ${styles.agreementError}`}>
+                {agreementError}
+              </div>
+            )}
           </div>
         )}
         
@@ -349,7 +376,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
         <button 
           className={styles.enterBtn} 
           type="submit"
-          disabled={isLoading}
+          disabled={isLoading || (!isLoginMode && !isAgreed)}
         >
           <b className={styles.b}>
             {isLoading 
@@ -378,16 +405,15 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
         <button 
           className={styles.googleBtn} 
           type="button"
-          onClick={() => console.log("Google авторизация")}
-        >
+          onClick={() => console.log("Google авторизация")}>
+          <div className={styles.google}>
+            {isLoginMode ? "Вход через аккаунт Google" : "Регистрация через Google"}
+          </div>
           <img
             className={styles.googleBtnImgIcon}
             alt="Google"
             src="/googlebtnimg.svg"
           />
-          <div className={styles.google}>
-            {isLoginMode ? "Вход через аккаунт Google" : "Регистрация через Google"}
-          </div>
         </button>
       </div>
     </form>
