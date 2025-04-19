@@ -3,6 +3,12 @@ import PropTypes from "prop-types";
 import styles from "./page-container.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
+// URL для будущей интеграции с API
+const API_ENDPOINTS = {
+  login: "", // здесь будет URL для входа
+  register: "", // здесь будет URL для регистрации
+};
+
 const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -56,6 +62,33 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
     });
   };
 
+  // Сохранение данных пользователя в localStorage
+  const saveUserData = (userData) => {
+    // Получаем текущий список пользователей или создаем пустой массив
+    const users = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+    
+    // Добавляем нового пользователя (без пароля в открытом виде)
+    const newUser = {
+      email: userData.email,
+      id: Date.now(), // временный ID для фронтенда
+      createdAt: new Date().toISOString()
+    };
+    
+    // Добавляем пользователя в список
+    users.push(newUser);
+    
+    // Сохраняем обновленный список
+    localStorage.setItem("registeredUsers", JSON.stringify(users));
+    
+    return newUser;
+  };
+
+  // Проверка существования пользователя
+  const userExists = (email) => {
+    const users = JSON.parse(localStorage.getItem("registeredUsers") || "[]");
+    return users.some(user => user.email === email);
+  };
+
   // Обработчик отправки формы
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,19 +123,47 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
     setIsLoading(true);
     
     try {
-      // Имитация запроса на сервер
+      // В реальном приложении здесь будет запрос к API
+      // const response = await fetch(isLoginMode ? API_ENDPOINTS.login : API_ENDPOINTS.register, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   body: JSON.stringify({
+      //     email: formData.email,
+      //     password: formData.password
+      //   })
+      // });
+      
+      // Имитация запроса на сервер для работы фронтенда без бекенда
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      console.log(`${isLoginMode ? "Вход" : "Регистрация"}`, formData);
-      setFormSuccess(isLoginMode 
-        ? "Вход выполнен успешно!" 
-        : "Регистрация успешно завершена!");
-      
-      // Вызов колбэка успешного входа
-      onLoginSuccess();
-      
-      // Сброс формы после успешной регистрации
-      if (!isLoginMode) {
+      if (isLoginMode) {
+        // Проверка существования пользователя при входе
+        if (!userExists(formData.email)) {
+          setFormError("Пользователь с таким email не найден");
+          return;
+        }
+        
+        console.log("Вход пользователя:", formData.email);
+        setFormSuccess("Вход выполнен успешно!");
+        
+        // Вызов колбэка успешного входа
+        onLoginSuccess({ email: formData.email });
+      } else {
+        // Проверка на существующего пользователя при регистрации
+        if (userExists(formData.email)) {
+          setFormError("Пользователь с таким email уже существует");
+          return;
+        }
+        
+        // Сохраняем данные нового пользователя
+        const userData = saveUserData({ email: formData.email });
+        
+        console.log("Регистрация нового пользователя:", userData);
+        setFormSuccess("Регистрация успешно завершена!");
+        
+        // Сброс формы после успешной регистрации
         setFormData({
           email: "",
           password: "",
