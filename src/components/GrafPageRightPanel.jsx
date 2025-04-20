@@ -26,7 +26,7 @@ const GrafPageRightPanel = () => {
   const selectAmountRef = useRef(null);
   const timeRef = useRef(null);
   const amountRef = useRef(null);
-
+  const [betsHistory, setBetsHistory] = useState(null);
   // Открытие/закрытие селекторов
   const toggleSelectTime = (e) => {
     e.stopPropagation();
@@ -74,7 +74,28 @@ const GrafPageRightPanel = () => {
     }
     setSelectedAmount(value);
   };
+    useEffect(() => {
 
+        const fetchBets = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/api/completed-bets?limit=5', {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`, // if needed
+                    }
+                });
+
+                if (!response.ok) throw new Error('Failed to fetch');
+                const data = await response.json();
+                console.log(data)
+                setBetsHistory(data);
+            } catch (error) {
+                console.error('Error fetching bets:', error);
+            }
+        };
+
+        fetchBets();
+
+    }, []);
   // Закрытие всплывающих окон при клике вне них
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -147,17 +168,22 @@ const GrafPageRightPanel = () => {
           <div className={styles.sell}>Продать</div>
         </div>
 
-        <div className="govno" style={{
-          display: 'flex',
-          gap: "10px",
-          flexDirection: "column-reverse",
-          height: '100%',
-          marginBottom: '1.5vh'
-        }}>
-          {govno.map((item, index) => (
-              <Bet initialDirection={item.direction} initialResult={item.result} initialPrice={item.price} key={index}/>
-          ))}
-        </div>
+          <div className="govno" style={{
+              display: 'flex',
+              gap: "10px",
+              flexDirection: "column-reverse",
+              height: '60vh',
+              marginBottom: '10px'
+          }}>
+              <span style={{textAlign:"center", fontSize:"0.7vw"}}>== CURRENT BETS ==</span>
+              {betsHistory.map((item, index) => (
+                  <Bet initialDirection={item.direction} initialResult={item.result} initialPrice={item.price}
+                       key={index}/>
+              ))}
+
+          </div>
+
+          <Bet initialDirection={"up"} initialResult={"loss"} initialPrice={1000}/>
       </div>
 
       {showSelectTime && <GrafPageSelectTime selectTimeRef={selectTimeRef} rightPanelElement={rightPanelRef.current}/>}
@@ -188,8 +214,6 @@ const Bet = ({
     // derive styling & signs
     const isLoss     = result === "loss";
     const color      = isLoss ? 'red' : 'green';
-    const priceSign  = isLoss ? '-'     : '';
-    const resultSign = isLoss ? '–'     : '+';
 
     return (
         <div
@@ -220,7 +244,7 @@ const Bet = ({
                     {direction}
                 </p>
                 <p style={{ fontSize: '0.7vw', margin: '0 0.5vw', color }}>
-                    {priceSign}{price}
+                    {price}
                 </p>
             </div>
 
