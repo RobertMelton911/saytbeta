@@ -66,6 +66,24 @@ const GrafPageRightPanel = () => {
     setSelectedAmount((prev) => Math.max(Number(prev) - 5, 5).toString());
   };
 
+  const handlePlaceBet = async () => {
+      try {
+          const response = await fetch("", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+              },
+              body: {
+                  ...
+              }
+          })
+      }
+      catch (error) {
+          console.log(error);
+      }
+  }
+
   // Обработка ручного ввода суммы
   const handleAmountChange = (e) => {
     let value = e.target.value.replace(/\D/, ""); // Удаляем все нечисловые символы
