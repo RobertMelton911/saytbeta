@@ -1,18 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from "./FirstPageChoice.module.css";
 import { useNavigate } from "react-router-dom";
 
 const FirstPageChoice = () => {
   const navigate = useNavigate();
   const handleDemo = () => navigate("/grafpage");
-  
+
   return (
     <div className={styles.mainChoice}>
       <div className={styles.choiceContainer}>
         <div className={styles.div6}>Почему стоит выбрать нас?</div>
         
         <div className={styles.choiceList}>
-          <div className={styles.listOne}>
+          <div className={styles.list}>
             <img
               className={styles.vectorIcon6}
               alt=""
@@ -30,7 +30,7 @@ const FirstPageChoice = () => {
             </b>
           </div>
           
-          <div className={styles.listTwo}>
+          <div className={styles.list}>
             <img
               className={styles.vectorIcon5}
               alt=""
@@ -42,7 +42,7 @@ const FirstPageChoice = () => {
             </b>
           </div>
           
-          <div className={styles.listThree}>
+          <div className={styles.list}>
             <img
               className={styles.vectorIcon4}
               alt=""
@@ -55,7 +55,7 @@ const FirstPageChoice = () => {
             </b>
           </div>
           
-          <div className={styles.listFour}>
+          <div className={styles.list}>
             <img
               className={styles.vectorIcon3}
               alt=""
@@ -68,7 +68,7 @@ const FirstPageChoice = () => {
             </b>
           </div>
           
-          <div className={styles.listFive}>
+          <div className={styles.list}>
             <img
               className={styles.vectorIcon2}
               alt=""
@@ -81,7 +81,7 @@ const FirstPageChoice = () => {
             </b>
           </div>
           
-          <div className={styles.listSix}>
+          <div className={styles.list}>
             <img
               className={styles.vectorIcon1}
               alt=""

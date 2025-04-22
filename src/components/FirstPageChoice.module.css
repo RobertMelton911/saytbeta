@@ -64,7 +64,7 @@
   font-family: var(--pocketoptioncom-semantic-link);
 }
 
-.listOne, .listTwo, .listThree, .listFour, .listFive, .listSix {
+.list {
   display: flex;
   flex-direction: column;
   padding: 1rem;
