@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import styles from "./page-container.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-// URL для будущей интеграции с API
+// Using Vite environment variables
 const API_ENDPOINTS = {
-  login: "http://localhost:8000/api/login/", // здесь будет URL для входа
-  register: "http://localhost:8000/api/register/", // здесь будет URL для регистрации
+  login: import.meta.env.VITE_API_LOGIN_URL || "http://localhost:8000/api/login/",
+  register: import.meta.env.VITE_API_REGISTER_URL || "http://localhost:8000/api/register/",
+  completedBets: import.meta.env.VITE_API_COMPLETED_BETS_URL || "http://localhost:8000/api/completed-bets"
 };
 
 const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
@@ -14,7 +15,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   const [searchParams] = useSearchParams();
   const initialMode = searchParams.get("mode") === "register" ? "register" : "login";
 
-  // Состояния формы
+  // Form states
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -29,49 +30,52 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
   const [isLoginMode, setIsLoginMode] = useState(initialMode === "login");
   const [agreementError, setAgreementError] = useState("");
 
-  // Синхронизация режима при изменении URL параметра
+  // Sync mode when URL parameter changes
   useEffect(() => {
     const currentMode = searchParams.get("mode") === "register" ? "register" : "login";
     setIsLoginMode(currentMode === "login");
   }, [searchParams]);
 
-  // Валидация email
+
+
+  // Email validation
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   };
 
-  // Валидация пароля
+  // Password validation
   const validatePassword = (password) => password.length >= 8;
 
-  // Сброс ошибок при изменении формы
+  // Reset errors when form changes
   useEffect(() => {
     if (formError) setFormError("");
     if (formSuccess) setFormSuccess("");
     if (agreementError) setAgreementError("");
   }, [formData, isAgreed, isLoginMode]);
 
-  // Обработчики изменения полей
+  // Field change handlers
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Обработчик изменения состояния чекбокса согласия
+  // Agreement checkbox handler
   const handleAgreementChange = (e) => {
     setIsAgreed(e.target.checked);
     if (e.target.checked) setAgreementError("");
   };
 
-  // Обработчик отправки формы - интеграция с бэкендом и сохранение токенов
+  // Form submission handler - backend integration and token storage
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Базовая валидация полей
+    // Basic field validation
     if (!formData.email || !formData.password) {
       setFormError("Пожалуйста, заполните все обязательные поля");
       return;
     }
+    // Uncomment if needed
     // if (!validateEmail(formData.email)) {
     //   setFormError("Пожалуйста, введите корректный email");
     //   return;
@@ -104,20 +108,22 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
           password: formData.password
         })
       });
+
       const data = await response.json();
-      console.log(data)
-      console.log("fetched resource")
+      console.log(data);
+      console.log("fetched resource");
+
       if (!response.ok) {
         setFormError(data.message || "Ошибка при запросе");
       } else {
-        // Сохраняем токены в localStorage
+        // Save tokens to localStorage
         localStorage.setItem("accessToken", data.access);
         localStorage.setItem("refreshToken", data.refresh);
 
         setFormSuccess(isLoginMode ? "Вход выполнен успешно!" : "Регистрация успешно завершена!");
         onLoginSuccess(data);
 
-        // Сброс формы при регистрации
+        // Reset form after registration
         if (!isLoginMode) {
           setFormData({ email: "", password: "", confirmPassword: "" });
           setIsAgreed(false);
@@ -131,29 +137,32 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
     }
   };
 
-  const handleSubmit1 = async () => {
-    const response = await fetch("http://localhost:8000/api/completed-bets?limit=3", {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' , "Authorization": `Bearer ${localStorage.getItem("accessToken")}` },
-      // body: JSON.stringify({
-      //   amount: 100,
-      //   chart_type_id: 1,
-      //   direction: "UP",
-      //   entry_price: 10400.0,
-      //   timeframe: 1
-      // })
-    });
+  const fetchCompletedBets = async () => {
+    try {
+      const response = await fetch(`${API_ENDPOINTS.completedBets}?limit=3`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+        }
+      });
 
-    console.log(response.json())
-  }
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error("Error fetching completed bets:", error);
+      throw error;
+    }
+  };
 
-  // Переключение видимости пароля
+  // Toggle password visibility
   const togglePasswordVisibility = (field) => {
     if (field === 'password') setShowPassword(!showPassword);
     else if (field === 'confirmPassword') setShowConfirmPassword(!showConfirmPassword);
   };
 
-  // Переключение между режимами входа и регистрации с обновлением URL
+  // Toggle between login and registration modes with URL update
   const toggleMode = () => {
     const newMode = isLoginMode ? "register" : "login";
     navigate(`?mode=${newMode}`, { replace: true });
@@ -166,7 +175,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
 
   return (
       <form className={`${styles.pageContainer} ${className}`} onSubmit={handleSubmit}>
-        {/* Заголовок и верхняя часть */}
+        {/* Header and top section */}
         <div className={styles.authContainer}>
           <div className={styles.authInnerContainer} onClick={() => navigate("/")}>
             <img
@@ -206,11 +215,11 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
           </div>
         </div>
 
-        {/* Сообщение об ошибке или успехе */}
+        {/* Error or success message */}
         {formError && <div className={styles.formError}>{formError}</div>}
         {formSuccess && <div className={styles.formSuccess}>{formSuccess}</div>}
 
-        {/* Поле Email */}
+        {/* Email field */}
         <div className={styles.emailInput}>
           <div className={styles.stringEmail}>
             <input
@@ -225,7 +234,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
           </div>
         </div>
 
-        {/* Поле пароля */}
+        {/* Password field */}
         <div className={styles.credentials}>
           <div className={styles.stringPassword}>
             <input
@@ -247,7 +256,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
             </button>
           </div>
 
-          {/* Поле подтверждения пароля (только для регистрации) */}
+          {/* Confirm password field (registration only) */}
           {!isLoginMode && (
               <div className={styles.stringPassword}>
                 <input
@@ -270,7 +279,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
               </div>
           )}
 
-          {/* Чекбокс согласия (только для регистрации) */}
+          {/* Agreement checkbox (registration only) */}
           {!isLoginMode && (
               <div className={styles.agreement}>
                 <div className={styles.agreementInner}>
@@ -295,7 +304,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
                     </div>
                   </div>
                 </div>
-                {/* Отдельное сообщение об ошибке для соглашения */}
+                {/* Agreement error message */}
                 {agreementError && (
                     <div className={`${styles.formError} ${styles.agreementError}`}>
                       {agreementError}
@@ -304,7 +313,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
               </div>
           )}
 
-          {/* Ссылка на восстановление пароля (только для входа) */}
+          {/* Password reset link (login only) */}
           {isLoginMode && (
               <div className={styles.forgotPassword}>
                 <div
@@ -319,7 +328,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
           )}
         </div>
 
-        {/* Кнопка действия (Вход/Регистрация) */}
+        {/* Action button (Login/Register) */}
         <div className={styles.registrationButton}>
           <button
               className={styles.enterBtn}
@@ -336,7 +345,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
           </button>
         </div>
 
-        {/* Разделитель "или" */}
+        {/* "or" divider */}
         <div className={styles.dividerContainerWrapper}>
           <div className={styles.dividerContainer}>
             <div className={styles.divider}>
@@ -349,7 +358,7 @@ const PageContainer = ({ className = "", onLoginSuccess = () => {} }) => {
           </div>
         </div>
 
-        {/* Кнопка входа через Google */}
+        {/* Google login button */}
         <div className={styles.dividerContainerWrapper}>
           <button
               className={styles.googleBtn}

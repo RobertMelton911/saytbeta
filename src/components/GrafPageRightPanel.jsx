@@ -1,5 +1,5 @@
 import React, {useRef, useEffect, useState} from "react";
-import { atom, useAtom } from "jotai";
+import {atom, useAtom} from "jotai";
 import styles from "./GrafPageRightPanel.module.css";
 import GrafPageSelectTime from "./GrafPageSelectTime";
 import GrafPageSelectAmount from "./GrafPageSelectAmount";
@@ -15,96 +15,87 @@ const timeframes = ["1мин", "5мин", "10мин", "15мин", "30мин", "1
 const maxAmount = 1000;
 
 const GrafPageRightPanel = () => {
-  const [showSelectTime, setShowSelectTime] = useAtom(selectTimeVisibleAtom);
-  const [selectedTime, setSelectedTime] = useAtom(selectedTimeAtom);
-  const [showSelectAmount, setShowSelectAmount] = useAtom(selectAmountVisibleAtom);
-  const [selectedAmount, setSelectedAmount] = useAtom(selectedAmountAtom);
+    const [showSelectTime, setShowSelectTime] = useAtom(selectTimeVisibleAtom);
+    const [selectedTime, setSelectedTime] = useAtom(selectedTimeAtom);
+    const [showSelectAmount, setShowSelectAmount] = useAtom(selectAmountVisibleAtom);
+    const [selectedAmount, setSelectedAmount] = useAtom(selectedAmountAtom);
 
-  // Реfs для управления кликами вне элемента
-  const rightPanelRef = useRef(null);
-  const selectTimeRef = useRef(null);
-  const selectAmountRef = useRef(null);
-  const timeRef = useRef(null);
-  const amountRef = useRef(null);
-  const [betsHistory, setBetsHistory] = useState(null);
-  // Открытие/закрытие селекторов
-  const toggleSelectTime = (e) => {
-    e.stopPropagation();
-    setShowSelectTime((prev) => !prev);
-  };
+    // Реfs для управления кликами вне элемента
+    const rightPanelRef = useRef(null);
+    const selectTimeRef = useRef(null);
+    const selectAmountRef = useRef(null);
+    const timeRef = useRef(null);
+    const amountRef = useRef(null);
+    const [betsHistory, setBetsHistory] = useState(null);
+    const [notification, setNotification] = useState({ show: false, message: "", type: "success" });
+    const [isPlacingBet, setIsPlacingBet] = useState(false);
+    // Открытие/закрытие селекторов
+    const toggleSelectTime = (e) => {
+        e.stopPropagation();
+        setShowSelectTime((prev) => !prev);
+    };
 
-  const toggleSelectAmount = (e) => {
-    e.stopPropagation();
-    setShowSelectAmount((prev) => !prev);
-  };
+    const toggleSelectAmount = (e) => {
+        e.stopPropagation();
+        setShowSelectAmount((prev) => !prev);
+    };
 
-  // Изменение времени кнопками +/-
-  const incrementTime = (e) => {
-    e.stopPropagation();
-    const currentIndex = timeframes.indexOf(selectedTime);
-    if (currentIndex < timeframes.length - 1) {
-      setSelectedTime(timeframes[currentIndex + 1]);
+    // Изменение времени кнопками +/-
+    const incrementTime = (e) => {
+        e.stopPropagation();
+        const currentIndex = timeframes.indexOf(selectedTime);
+        if (currentIndex < timeframes.length - 1) {
+            setSelectedTime(timeframes[currentIndex + 1]);
+        }
+    };
+
+    const decrementTime = (e) => {
+        e.stopPropagation();
+        const currentIndex = timeframes.indexOf(selectedTime);
+        if (currentIndex > 0) {
+            setSelectedTime(timeframes[currentIndex - 1]);
+        }
+    };
+
+    // Изменение суммы кнопками +/-
+    const incrementAmount = (e) => {
+        e.stopPropagation();
+        setSelectedAmount((prev) => Math.min(Number(prev) + 5, maxAmount).toString());
+    };
+
+    const decrementAmount = (e) => {
+        e.stopPropagation();
+        setSelectedAmount((prev) => Math.max(Number(prev) - 5, 5).toString());
+    };
+
+    const handlePlaceBet = async () => {
+        try {
+            const response = await fetch("", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+                },
+                // body: {
+                //     ...
+                // }
+            })
+        } catch (error) {
+            console.log(error);
+        }
     }
-  };
-
-  const decrementTime = (e) => {
-    e.stopPropagation();
-    const currentIndex = timeframes.indexOf(selectedTime);
-    if (currentIndex > 0) {
-      setSelectedTime(timeframes[currentIndex - 1]);
-    }
-  };
-
-  // Изменение суммы кнопками +/-
-  const incrementAmount = (e) => {
-    e.stopPropagation();
-    setSelectedAmount((prev) => Math.min(Number(prev) + 5, maxAmount).toString());
-  };
-
-  const decrementAmount = (e) => {
-    e.stopPropagation();
-    setSelectedAmount((prev) => Math.max(Number(prev) - 5, 5).toString());
-  };
-
-  const handlePlaceBet = async () => {
-      try {
-          const response = await fetch("", {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json",
-                  "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
-              },
-              body: {
-                  ...
-              }
-          })
-      }
-      catch (error) {
-          console.log(error);
-      }
-  }
-
-  // Обработка ручного ввода суммы
-  const handleAmountChange = (e) => {
-    let value = e.target.value.replace(/\D/, ""); // Удаляем все нечисловые символы
-    if (value !== "") {
-      value = Math.min(Number(value), maxAmount).toString(); // Ограничиваем максимум
-    }
-    setSelectedAmount(value);
-  };
     useEffect(() => {
-
         const fetchBets = async () => {
             try {
                 const response = await fetch('http://localhost:8000/api/completed-bets?limit=5', {
                     headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`, // if needed
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                     }
                 });
 
                 if (!response.ok) throw new Error('Failed to fetch');
                 const data = await response.json();
-                console.log(data)
+                console.log(data);
                 setBetsHistory(data);
             } catch (error) {
                 console.error('Error fetching bets:', error);
@@ -112,127 +103,246 @@ const GrafPageRightPanel = () => {
         };
 
         fetchBets();
-
     }, []);
-  // Закрытие всплывающих окон при клике вне них
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        showSelectTime &&
-        selectTimeRef.current &&
-        !selectTimeRef.current.contains(event.target) &&
-        timeRef.current &&
-        !timeRef.current.contains(event.target)
-      ) {
-        setShowSelectTime(false);
-      }
 
-      if (
-        showSelectAmount &&
-        selectAmountRef.current &&
-        !selectAmountRef.current.contains(event.target) &&
-        amountRef.current &&
-        !amountRef.current.contains(event.target)
-      ) {
-        setShowSelectAmount(false);
-      }
+
+    // Обработка ручного ввода суммы
+    const handleAmountChange = (e) => {
+        let value = e.target.value.replace(/\D/, ""); // Удаляем все нечисловые символы
+        if (value !== "") {
+            value = Math.min(Number(value), maxAmount).toString(); // Ограничиваем максимум
+        }
+        setSelectedAmount(value);
+    };
+    const apiUrl = import.meta.env.VITE_API_COMPLETED_BETS_URL || 'http://localhost:8000/api/completed-bets';
+
+    const showNotification = (message, type = "success") => {
+        setNotification({
+            show: true,
+            message,
+            type
+        });
+
+        // Hide notification after 5 seconds
+        setTimeout(() => {
+            setNotification({
+                show: false,
+                message: "",
+                type: "success"
+            });
+        }, 5000);
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+    const placeBet = async (direction) => {
+        if (isPlacingBet) return; // Prevent multiple submissions
+
+        setIsPlacingBet(true);
+
+        try {
+            // Get current price (you need to implement this based on your chart data)
+            const currentPrice = 10400.0; // Replace with actual price from chart
+
+            // Map timeframe from display value to API value (minutes)
+            const timeframeMap = {
+                "1мин": 1,
+                "5мин": 5,
+                "10мин": 10,
+                "15мин": 15,
+                "30мин": 30,
+                "1час": 60
+            };
+
+            // Prepare bet data
+            const betData = {
+                amount: Number(selectedAmount),
+                timeframe: timeframeMap[selectedTime] || 1,
+                direction: direction,
+                entry_price: currentPrice,
+                chart_type_id: 1 // Replace with your actual chart type ID
+            };
+
+            // Send bet to backend
+            const response = await fetch("http://localhost:8000/api/bets/place/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("accessToken")}`,
+                },
+                body: JSON.stringify(betData)
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || "Failed to place bet");
+            }
+
+            // Show success notification
+            showNotification(`Ставка успешно размещена: ${direction === "UP" ? "Купить" : "Продать"} ${selectedAmount}`, "success");
+
+            // Refresh bets history
+           
+
+        } catch (error) {
+            console.error("Error placing bet:", error);
+            showNotification(error.message || "Ошибка при размещении ставки", "error");
+        } finally {
+            setIsPlacingBet(false);
+        }
     };
-  }, [showSelectTime, showSelectAmount]);
-    let govno = [
-        { direction: 'up',    price: 120, result: 'win'  },
-        { direction: 'down',  price:  75, result: 'loss' },
-        { direction: 'up',    price: 200, result: 'loss' },
-        { direction: 'down',  price: 150, result: 'win'  },
-        { direction: 'down',  price:  95, result: 'win'  },
-    ];
-  return (
-    <>
-      <div className={styles.rightPanel} ref={rightPanelRef}>
-        <div className={styles.control}>
-          <div className={styles.controlBox} ref={timeRef} onClick={toggleSelectTime}>
-            <div className={styles.label}>Время</div>
-            <div className={styles.controlButtons}>
-              <div className={styles.button} onClick={decrementTime} style={{ opacity: selectedTime === "1мин" ? 0.5 : 1 }}>
-                -
-              </div>
-              <div className={styles.valuetime}>{selectedTime}</div>
-              <div className={styles.button} onClick={incrementTime} style={{ opacity: selectedTime === "1час" ? 0.5 : 1 }}>
-                +
-              </div>
+
+    // Закрытие всплывающих окон при клике вне них
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                showSelectTime &&
+                selectTimeRef.current &&
+                !selectTimeRef.current.contains(event.target) &&
+                timeRef.current &&
+                !timeRef.current.contains(event.target)
+            ) {
+                setShowSelectTime(false);
+            }
+
+            if (
+                showSelectAmount &&
+                selectAmountRef.current &&
+                !selectAmountRef.current.contains(event.target) &&
+                amountRef.current &&
+                !amountRef.current.contains(event.target)
+            ) {
+                setShowSelectAmount(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [showSelectTime, showSelectAmount]);
+
+    return (
+        <>
+            <div className={styles.rightPanel} ref={rightPanelRef}>
+                <div className={styles.control}>
+                    <div className={styles.controlBox} ref={timeRef} onClick={toggleSelectTime}>
+                        <div className={styles.label}>Время</div>
+                        <div className={styles.controlButtons}>
+                            <div className={styles.button} onClick={decrementTime}
+                                 style={{opacity: selectedTime === "1мин" ? 0.5 : 1}}>
+                                -
+                            </div>
+                            <div className={styles.valuetime}>{selectedTime}</div>
+                            <div className={styles.button} onClick={incrementTime}
+                                 style={{opacity: selectedTime === "1час" ? 0.5 : 1}}>
+                                +
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={styles.controlBox} ref={amountRef} onClick={toggleSelectAmount}>
+                        <div className={styles.label}>Сумма</div>
+                        <div className={styles.controlButtons}>
+                            <div className={styles.button} onClick={decrementAmount}
+                                 style={{opacity: Number(selectedAmount) <= 5 ? 0.5 : 1}}>
+                                -
+                            </div>
+                            <input className={styles.valueInput} type="text" value={selectedAmount}
+                                   onChange={handleAmountChange} onClick={(e) => e.stopPropagation()}/>
+                            <div className={styles.button} onClick={incrementAmount}
+                                 style={{opacity: Number(selectedAmount) >= maxAmount ? 0.5 : 1}}>
+                                +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={styles.actions}>
+                    <div
+                        className={styles.buy}
+                        onClick={() => placeBet("UP")}
+                        style={{opacity: isPlacingBet ? 0.7 : 1, cursor: isPlacingBet ? 'wait' : 'pointer'}}
+                    >
+                        Купить
+                    </div>
+                    <div
+                        className={styles.sell}
+                        onClick={() => placeBet("DOWN")}
+                        style={{opacity: isPlacingBet ? 0.7 : 1, cursor: isPlacingBet ? 'wait' : 'pointer'}}
+                    >
+                        Продать
+                    </div>
+                </div>
+
+                <div className="govno" style={{
+                    display: 'flex',
+                    gap: "10px",
+                    flexDirection: "column-reverse",
+                    height: '60vh',
+                    marginBottom: '10px'
+                }}>
+                    <span style={{textAlign: "center", fontSize: "0.7vw"}}>== CURRENT BETS ==</span>
+                    {betsHistory?.map((item, index) => (
+                        <Bet initialDirection={item.direction} initialResult={item.result} initialPrice={item.result}
+                             key={index}/>
+                    ))}
+
+                </div>
+
+                <Bet initialDirection={"up"} initialResult={"loss"} initialPrice={1000}/>
             </div>
-          </div>
 
-          <div className={styles.controlBox} ref={amountRef} onClick={toggleSelectAmount}>
-            <div className={styles.label}>Сумма</div>
-            <div className={styles.controlButtons}>
-              <div className={styles.button} onClick={decrementAmount} style={{ opacity: Number(selectedAmount) <= 5 ? 0.5 : 1 }}>
-                -
-              </div>
-              <input className={styles.valueInput} type="text" value={selectedAmount} onChange={handleAmountChange} onClick={(e) => e.stopPropagation()}/>
-              <div className={styles.button} onClick={incrementAmount} style={{ opacity: Number(selectedAmount) >= maxAmount ? 0.5 : 1 }}>
-                +
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={styles.actions}>
-          <div className={styles.buy}>Купить</div>
-          <div className={styles.sell}>Продать</div>
-        </div>
-
-          <div className="govno" style={{
-              display: 'flex',
-              gap: "10px",
-              flexDirection: "column-reverse",
-              height: '60vh',
-              marginBottom: '10px'
-          }}>
-              <span style={{textAlign:"center", fontSize:"0.7vw"}}>== CURRENT BETS ==</span>
-              {betsHistory.map((item, index) => (
-                  <Bet initialDirection={item.direction} initialResult={item.result} initialPrice={item.price}
-                       key={index}/>
-              ))}
-
-          </div>
-
-          <Bet initialDirection={"up"} initialResult={"loss"} initialPrice={1000}/>
-      </div>
-
-      {showSelectTime && <GrafPageSelectTime selectTimeRef={selectTimeRef} rightPanelElement={rightPanelRef.current}/>}
-      {showSelectAmount && <GrafPageSelectAmount selectAmountRef={selectAmountRef} rightPanelElement={rightPanelRef.current} />}
-    </>
-  );
+            {showSelectTime &&
+                <GrafPageSelectTime selectTimeRef={selectTimeRef} rightPanelElement={rightPanelRef.current}/>}
+            {showSelectAmount &&
+                <GrafPageSelectAmount selectAmountRef={selectAmountRef} rightPanelElement={rightPanelRef.current}/>}
+            {notification?.show && (
+                <div className="{styles.notification}" style={{
+                    position: 'fixed',
+                    top: '20px',
+                    right: '20px',
+                    padding: '15px',
+                    borderRadius: '5px',
+                    backgroundColor: notification.type === 'success' ? 'rgba(0, 255, 0, 0.2)' : 'rgba(255, 0, 0, 0.2)',
+                    border: `1px solid ${notification.type === 'success' ? 'green' : 'red'}`,
+                    color: notification.type === 'success' ? 'green' : 'red',
+                    zIndex: 1000,
+                }}>
+                    {notification.message}
+                </div>
+            )}
+        </>
+    );
 };
 
 export default GrafPageRightPanel;
 
 
-
 const Bet = ({
-                 initialResult = false,   // seed for result
+                 initialResult = "",   // seed for result
                  initialPrice = 0,        // seed for price
                  initialDirection = ''    // seed for direction
              }) => {
     // internal state seeded from props
-    const [result, setResult] = useState(initialResult);
+    let actualResult = initialResult <= 0 ? "loss" : "win";
+    const [result, setResult] = useState(actualResult);
     const [price, setPrice] = useState(initialPrice);
     const [direction, setDirection] = useState(initialDirection);
 
     // if the parent ever changes the initial* props and you want to sync:
-    useEffect(() => { setResult(initialResult); }, [initialResult]);
-    useEffect(() => { setPrice(initialPrice); },     [initialPrice]);
-    useEffect(() => { setDirection(initialDirection); }, [initialDirection]);
+    useEffect(() => {
+        setResult(actualResult);
+    }, [initialResult]);
+    useEffect(() => {
+        setPrice(initialPrice);
+    }, [initialPrice]);
+    useEffect(() => {
+        setDirection(initialDirection);
+    }, [initialDirection]);
 
     // derive styling & signs
-    const isLoss     = result === "loss";
-    const color      = isLoss ? 'red' : 'green';
-
+    const isLoss = result === "loss";
+    const color = isLoss ? 'red' : 'green';
     return (
         <div
             className="negovno"
@@ -258,10 +368,10 @@ const Bet = ({
                     justifyContent: 'center',
                 }}
             >
-                <p style={{ fontSize: '0.7vw', margin: '0 0.5vw' }}>
+                <p style={{fontSize: '0.7vw', margin: '0 0.5vw'}}>
                     {direction}
                 </p>
-                <p style={{ fontSize: '0.7vw', margin: '0 0.5vw', color }}>
+                <p style={{fontSize: '0.7vw', margin: '0 0.5vw', color}}>
                     {price}
                 </p>
             </div>
@@ -277,7 +387,7 @@ const Bet = ({
                     justifyContent: 'center',
                 }}
             >
-                <p style={{ fontSize: '1.5vw', margin: 0, color }}>
+                <p style={{fontSize: '1.5vw', margin: 0, color}}>
                     {result.toUpperCase()}
                 </p>
             </div>
