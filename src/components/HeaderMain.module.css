@@ -73,8 +73,37 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.depositButton:hover {
-  transform: scale(1.05); /* Увеличение на 5% */
+.depositInput {
+  -moz-appearance: textfield; /* Firefox remove arrows */
+  appearance: textfield; /* Other browsers */
+  width: 80px;
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  background-color: #2a2a2e;
+  color: #fff;
+  outline: none;
+  padding: 8px 5px; /* smaller horizontal padding */
+  border-radius: 10px;
+  border: 1px solid #54565f;
+  transition: background 0.3s, border 0.3s;
+}
+
+/* Chrome, Safari, Edge - Remove arrows */
+.depositInput::-webkit-outer-spin-button,
+.depositInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.depositInput::placeholder {
+  color: #aaa;
+}
+
+.depositInput:hover,
+.depositInput:focus {
+  background-color: #3a3a3a;
+  border-color: #707070;
 }
 
 /* Текст в кнопке депозита */
