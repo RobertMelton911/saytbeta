@@ -4,6 +4,7 @@ import HeaderMain from "../components/HeaderMain";
 import GrafPageLeftPanel from "../components/GrafPageLeftPanel";
 import GrafPageRightPanel from "../components/GrafPageRightPanel";
 import GrafPagePairNumber from "../components/GrafPagePairNumber";
+import GraphWrapper from "../components/graph/GraphWrapper";
 
 const GrafPage = () => {
   return (
@@ -11,9 +12,11 @@ const GrafPage = () => {
       <HeaderMain />
       <div className={styles.content}>
         <GrafPageLeftPanel />
-        <div className={styles.pairNumberContainer}>
-          <GrafPagePairNumber />
-        </div>
+
+        {/*<div className={styles.pairNumberContainer}>*/}
+        {/*  <GrafPagePairNumber />*/}
+        {/*</div>*/}
+          <GraphWrapper />
         <GrafPageRightPanel />
       </div>
     </div>
