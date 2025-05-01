@@ -5,7 +5,7 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from 'react';
-import CandlestickChart from './CandlestickChart';
+import CandleStickChart from './CandleStickChart';
 
 /**
  * Groups raw price stamps into candlestick data.
@@ -172,7 +172,7 @@ export default function GraphWrapper() {
     // Just render the chart with no UI controls
     return (
         <div style={{ width: '2000px', height: '800px' }}>
-            <CandlestickChart
+            <CandleStickChart
                 historicalCandles={historicalCandles}
                 currentCandle={currentCandle}
             />
