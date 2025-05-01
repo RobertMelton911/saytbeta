@@ -1149,4 +1149,5 @@ CandlestickChart.propTypes = {
     })
 };
 
+
 export default CandlestickChart;
