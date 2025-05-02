@@ -6,6 +6,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import CandleStickChart from './CandleStickChart';
+import {atom, useAtom} from "jotai";
 
 /**
  * Groups raw price stamps into candlestick data.
@@ -18,6 +19,8 @@ import CandleStickChart from './CandleStickChart';
 /**
  * Balanced wrapper component for the CandlestickChart
  */
+
+export const currentPriceAtom = atom(10000.0)
 export default function GraphWrapper() {
     // Data states
     const [allStamps, setAllStamps] = useState([]);
@@ -32,7 +35,7 @@ export default function GraphWrapper() {
     const nextCandleCloseIndex = useRef(stampsPerCandle);
     const updateCounterRef = useRef(0);
     const socketRef = useRef(null);
-
+    const [currentPrice, setCurrentPrice] = useAtom(currentPriceAtom);
     // Process new price stamps to update current candle
     const processCurrentCandle = useCallback((stamps) => {
         // Only process if we have stamps
@@ -146,11 +149,14 @@ export default function GraphWrapper() {
                         price: parseFloat(data.price)
                     };
 
+                    setCurrentPrice(newStamp.price)
+
                     setAllStamps(prev => [...prev, newStamp]);
                 }
             } catch (error) {
                 console.error("Error processing WebSocket message:", error);
             }
+
         };
 
         socket.onclose = () => {

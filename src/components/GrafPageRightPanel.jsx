@@ -4,6 +4,7 @@ import styles from "./GrafPageRightPanel.module.css";
 import GrafPageSelectTime from "./GrafPageSelectTime";
 import GrafPageSelectAmount from "./GrafPageSelectAmount";
 import {demoBalanceAtom} from "./HeaderMain";
+import {currentPriceAtom} from "./graph/GraphWrapper";
 // Состояния для управления выбором времени и суммы
 export const selectTimeVisibleAtom = atom(false);
 export const selectedTimeAtom = atom("1мин");
@@ -30,6 +31,7 @@ const GrafPageRightPanel = () => {
     const [notification, setNotification] = useState({ show: false, message: "", type: "success" });
     const [isPlacingBet, setIsPlacingBet] = useState(false);
     const [demoBalance, setDemoBalance] =  useAtom(demoBalanceAtom);
+    const [currentPrice, setCurrentPrice] = useAtom(currentPriceAtom);
     // Открытие/закрытие селекторов
     const toggleSelectTime = (e) => {
         e.stopPropagation();
@@ -153,7 +155,7 @@ const GrafPageRightPanel = () => {
 
         try {
             // Get current price (you need to implement this based on your chart data)
-            const currentPrice = 10400.0; // Replace with actual price from chart
+             // Replace with actual price from chart
 
             // Map timeframe from display value to API value (minutes)
             const timeframeMap = {
@@ -302,7 +304,7 @@ const GrafPageRightPanel = () => {
 
                 </div>
 
-                <Bet initialDirection={"up"} initialResult={"loss"} initialPrice={1000}/>
+                <Bet initialDirection={currentBets[0].direction} initialResult={currentBets[0].result} initialPrice={currentBets[0].result}/>
             </div>
 
             {showSelectTime &&
