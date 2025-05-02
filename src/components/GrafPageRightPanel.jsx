@@ -176,6 +176,7 @@ const GrafPageRightPanel = () => {
                 chart_type_id: 1 // Replace with your actual chart type ID
             };
 
+            console.log(betData)
             // Send bet to backend
             const response = await fetch(`${import.meta.env.VITE_API_URL}/api/bets/place/`, {
                 method: "POST",
@@ -191,6 +192,8 @@ const GrafPageRightPanel = () => {
             if (!response.ok) {
                 throw new Error(data.error || "Failed to place bet");
             }
+
+            console.log(data)
             setDemoBalance(prev => prev - Number(selectedAmount));
             // Show success notification
             showNotification(`Ставка успешно размещена: ${direction === "UP" ? "Купить" : "Продать"} ${selectedAmount}`, "success");

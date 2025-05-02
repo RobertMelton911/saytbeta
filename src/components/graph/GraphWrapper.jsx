@@ -150,7 +150,7 @@ export default function GraphWrapper() {
                     };
 
                     setCurrentPrice(newStamp.price)
-
+                    console.log("message received")
                     setAllStamps(prev => [...prev, newStamp]);
                 }
             } catch (error) {
