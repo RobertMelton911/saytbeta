@@ -303,8 +303,8 @@ const GrafPageRightPanel = () => {
                     ))}
 
                 </div>
+                {currentBets !== null ? <Bet initialDirection={currentBets[0].direction} initialResult={currentBets[0].result} initialPrice={currentBets[0].result}/> : <></>}
 
-                <Bet initialDirection={currentBets[0].direction} initialResult={currentBets[0].result} initialPrice={currentBets[0].result}/>
             </div>
 
             {showSelectTime &&
