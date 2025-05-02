@@ -87,7 +87,7 @@ const GrafPageRightPanel = () => {
     useEffect(() => {
         const fetchBets = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/completed-bets?limit=5', {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/completed-bets?limit=5`, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
                     }
@@ -162,7 +162,7 @@ const GrafPageRightPanel = () => {
             };
 
             // Send bet to backend
-            const response = await fetch("http://localhost:8000/api/bets/place/", {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/bets/place/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
