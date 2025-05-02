@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from "react";
 import styles from "./HeaderMain.module.css";
 import { useNavigate } from "react-router-dom";
+import {atom, useAtom} from "jotai";
+
+export const demoBalanceAtom = atom(1000)
 
 const HeaderMain = () => {
   const navigate = useNavigate();
-  const [demoBalance, setDemoBalance] = useState(1000);
+  const [demoBalance, setDemoBalance] = useAtom(demoBalanceAtom);
   const [depositAmount, setDepositAmount] = useState("");
 
   const handleNavigation = (path) => navigate(path);

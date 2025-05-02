@@ -3,7 +3,7 @@ import {atom, useAtom} from "jotai";
 import styles from "./GrafPageRightPanel.module.css";
 import GrafPageSelectTime from "./GrafPageSelectTime";
 import GrafPageSelectAmount from "./GrafPageSelectAmount";
-
+import {demoBalanceAtom} from "./HeaderMain";
 // Состояния для управления выбором времени и суммы
 export const selectTimeVisibleAtom = atom(false);
 export const selectedTimeAtom = atom("1мин");
@@ -19,7 +19,7 @@ const GrafPageRightPanel = () => {
     const [selectedTime, setSelectedTime] = useAtom(selectedTimeAtom);
     const [showSelectAmount, setShowSelectAmount] = useAtom(selectAmountVisibleAtom);
     const [selectedAmount, setSelectedAmount] = useAtom(selectedAmountAtom);
-
+    const [currentBets, setCurrentBets] = useState(null)
     // Реfs для управления кликами вне элемента
     const rightPanelRef = useRef(null);
     const selectTimeRef = useRef(null);
@@ -29,6 +29,7 @@ const GrafPageRightPanel = () => {
     const [betsHistory, setBetsHistory] = useState(null);
     const [notification, setNotification] = useState({ show: false, message: "", type: "success" });
     const [isPlacingBet, setIsPlacingBet] = useState(false);
+    const [demoBalance, setDemoBalance] =  useAtom(demoBalanceAtom);
     // Открытие/закрытие селекторов
     const toggleSelectTime = (e) => {
         e.stopPropagation();
@@ -97,6 +98,18 @@ const GrafPageRightPanel = () => {
                 const data = await response.json();
                 console.log(data);
                 setBetsHistory(data);
+
+
+                const responseCurrent = await fetch(`${import.meta.env.VITE_API_URL}/api/bets`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                    }
+                })
+
+                if (!response.ok) throw new Error('Failed to fetch current bets');
+                const dataCurrent = await responseCurrent.json();
+                console.log(dataCurrent)
+                setCurrentBets(data)
             } catch (error) {
                 console.error('Error fetching bets:', error);
             }
@@ -176,7 +189,7 @@ const GrafPageRightPanel = () => {
             if (!response.ok) {
                 throw new Error(data.error || "Failed to place bet");
             }
-
+            setDemoBalance(prev => prev - Number(selectedAmount));
             // Show success notification
             showNotification(`Ставка успешно размещена: ${direction === "UP" ? "Купить" : "Продать"} ${selectedAmount}`, "success");
 
@@ -278,7 +291,7 @@ const GrafPageRightPanel = () => {
                     display: 'flex',
                     gap: "10px",
                     flexDirection: "column-reverse",
-                    height: '15vh',
+                    height: '60vh',
                     marginBottom: '10px'
                 }}>
                     <span style={{textAlign: "center", fontSize: "0.7vw"}}>== CURRENT BETS ==</span>
