@@ -171,7 +171,7 @@ export default function GraphWrapper() {
 
     // Just render the chart with no UI controls
     return (
-        <div style={{ width: '2000px', height: '800px' }}>
+        <div style={{ width: '100% ', height: '100%' }}>
             <CandleStickChart
                 historicalCandles={historicalCandles}
                 currentCandle={currentCandle}

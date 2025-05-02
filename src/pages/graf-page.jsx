@@ -13,10 +13,10 @@ const GrafPage = () => {
       <div className={styles.content}>
         <GrafPageLeftPanel />
 
-        {/*<div className={styles.pairNumberContainer}>*/}
-        {/*  <GrafPagePairNumber />*/}
-        {/*</div>*/}
-          <GraphWrapper />
+        <div className={styles.pairNumberContainer}>
+         <GrafPagePairNumber />
+        </div>
+        <GraphWrapper />
         <GrafPageRightPanel />
       </div>
     </div>

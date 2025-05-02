@@ -278,7 +278,7 @@ const GrafPageRightPanel = () => {
                     display: 'flex',
                     gap: "10px",
                     flexDirection: "column-reverse",
-                    height: '60vh',
+                    height: '15vh',
                     marginBottom: '10px'
                 }}>
                     <span style={{textAlign: "center", fontSize: "0.7vw"}}>== CURRENT BETS ==</span>
