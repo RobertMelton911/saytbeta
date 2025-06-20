@@ -11,6 +11,7 @@ import ThirdPage from "./pages/third-page";
 import ProfilePage from "./pages/profile-page";
 import GrafPage from "./pages/graf-page";
 import LoginPage from "./pages/login-page";
+import ProtectedRoute from "./components/ProtectedRoute"; // Добавленный импорт
 
 function App() {
   const action = useNavigationType();
@@ -69,9 +70,25 @@ function App() {
       <Route path="/" element={<FirstPage />} />
       <Route path="/secondpage" element={<SecondPage />} />
       <Route path="/thirdpage" element={<ThirdPage />} />
-      <Route path="/grafpage" element={<GrafPage />} />
-      <Route path="/profilepage" element={<ProfilePage />} />
       <Route path="/login" element={<LoginPage />} />
+      
+      {/* Защищенные маршруты */}
+      <Route 
+        path="/grafpage" 
+        element={
+          <ProtectedRoute>
+            <GrafPage />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/profilepage" 
+        element={
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        } 
+      />
     </Routes>
   );
 }
